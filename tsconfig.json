@@ -1,13 +1,19 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@": ["./src"],
+      "@utils": ["./src/utils"],
+      "@assets": ["./src/assets"],
+      "@components": ["./src/components"],
+      "@styles": ["./src/styles"]
+    },
     "strict": true,
     "jsx": "react-native",
     "noEmit": true,
     "target": "es6"
   },
-  "exclude": [
-    "node_modules"
-  ]
-
+  "types": ["styled-components-react-native"],
+  "exclude": ["node_modules", "babel.config.js"]
 }
