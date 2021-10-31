@@ -4,9 +4,9 @@ import { Text } from "react-native";
 import styled, { ThemeProvider } from "styled-components/native";
 import { light, dark } from "@styles/theme";
 
-export default function App() {
+export const App = () => {
   return (
-    <ThemeProvider theme={light}>
+    <ThemeProvider theme={dark}>
       <Container>
         <StatusBar style='auto' />
         <Header>
@@ -17,13 +17,13 @@ export default function App() {
       </Container>
     </ThemeProvider>
   );
-}
+};
 
 const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${({theme})=> theme.mainBackground};
+  background-color: ${({ theme }) => theme.mainBackground};
 `;
 
 const Button = styled.Text`
