@@ -3,11 +3,13 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "@": ["./src"],
-      "@utils": ["./src/utils"],
-      "@assets": ["./src/assets"],
-      "@components": ["./src/components"],
-      "@styles": ["./src/styles"]
+      "@/*": ["./*"],
+      "@components/*": ["components/*"],
+      "@containers/*": ["containers/*"],
+      "@modules/*": ["modules/*"],
+      "@scenes/*": ["scenes/*"],
+      "@utils/*": ["utils/*"],
+      "@styles/*": ["styles/*"]
     },
     "strict": true,
     "jsx": "react-native",
