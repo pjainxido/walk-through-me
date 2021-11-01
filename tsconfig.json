@@ -4,12 +4,13 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"],
+      "@screen/*": ["screen/*"],
       "@components/*": ["components/*"],
-      "@containers/*": ["containers/*"],
       "@modules/*": ["modules/*"],
       "@scenes/*": ["scenes/*"],
       "@utils/*": ["utils/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@navigation/*": ["navigation/*"],
     },
     "strict": true,
     "jsx": "react-native",
