@@ -1,25 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Home } from "@screen/Home";
-import { Timer } from '@screen/Timer';
+import { Timer } from "@screen/Timer";
 import { Ionicons } from "@expo/vector-icons";
+import { ThemeContext } from "styled-components/native";
 
 const Stack = createStackNavigator();
 
-export default () => (
-  <Stack.Navigator
-    screenOptions={{
-      headerStyle: {
-        backgroundColor: "black",
-        borderBottomColor: "black",
-        shadowColor: "black",
-      },
-      headerTintColor: "#FFFFFF",
-      headerBackTitleVisible: false,
-      headerBackImage: () => <Ionicons name='md-arrow-back' color={"white"} size={26} />,
-    }}
-  >
-    <Stack.Screen name='Home' component={Home} />
-    <Stack.Screen name='Timer' component={Timer} />
-  </Stack.Navigator>
-);
+export default () => {
+  const themeContext = useContext(ThemeContext);
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        headerTransparent: true,
+        headerTintColor: themeContext.primaryText,
+        headerBackTitleVisible: false,
+        
+        headerBackImage: () => (
+          <Ionicons name='md-arrow-back' color={themeContext.primaryText} size={26} />
+        ),
+      }}
+    >
+      <Stack.Screen name='Home' component={Home} />
+      <Stack.Screen name='Timer' component={Timer} />
+    </Stack.Navigator>
+  );
+};
