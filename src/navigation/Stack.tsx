@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home } from "@screen/Home";
-import { Timer } from "@screen/Timer";
+import Home from "@screen/Home";
+import Timer from "@screen/Timer";
+import Log from "@/screen/Log";
 import { Ionicons } from "@expo/vector-icons";
 import { ThemeContext } from "styled-components/native";
 
@@ -12,6 +13,7 @@ export default () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        gestureDirection: "horizontal",
         headerTransparent: true,
         headerTintColor: themeContext.primaryText,
         headerBackTitleVisible: false,
@@ -24,7 +26,8 @@ export default () => {
       }}
     >
       <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Timer' component={Timer} />
+      <Stack.Screen name='Timer' component={Timer} options={{headerShown: false}}/>
+      <Stack.Screen name='Log' component={Log} />
     </Stack.Navigator>
   );
 };

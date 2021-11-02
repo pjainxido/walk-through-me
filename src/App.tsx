@@ -1,14 +1,20 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Appearance, ColorSchemeName } from "react-native";
 import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import styled, { ThemeProvider } from "styled-components/native";
 import { light, dark } from "@styles/theme";
 import Stack from "./navigation/Stack";
 
-
 export const App = () => {
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<ColorSchemeName>(null);
+  useEffect(() => {
+    Appearance.addChangeListener(({ colorScheme }) => {
+      setTheme(colorScheme === "dark" ? "dark" : "light");
+    });
+    return () => {};
+  }, []);
 
   return (
     <ThemeProvider theme={theme === "light" ? light : dark}>
@@ -17,7 +23,7 @@ export const App = () => {
           ...DefaultTheme,
           colors: {
             ...DefaultTheme.colors,
-            background: theme==='light' ? light.mainBackground : dark.mainBackground,
+            background: theme === "light" ? light.mainBackground : dark.mainBackground,
           },
         }}
       >
@@ -27,11 +33,3 @@ export const App = () => {
     </ThemeProvider>
   );
 };
-
-const Container = styled.View`
-  flex: 1;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.mainBackground};
-`;
