@@ -15,7 +15,9 @@ export default () => {
         headerTransparent: true,
         headerTintColor: themeContext.primaryText,
         headerBackTitleVisible: false,
-        
+        cardStyle: {
+          backgroundColor: themeContext.mainBackground,
+        },
         headerBackImage: () => (
           <Ionicons name='md-arrow-back' color={themeContext.primaryText} size={26} />
         ),

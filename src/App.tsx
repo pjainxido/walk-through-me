@@ -1,17 +1,26 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import "react-native-gesture-handler";
 import styled, { ThemeProvider } from "styled-components/native";
 import { light, dark } from "@styles/theme";
 import Stack from "./navigation/Stack";
 
+
 export const App = () => {
-  const [theme, setTheme] = useState<string>("dark");
+  const [theme, setTheme] = useState<string>("light");
 
   return (
     <ThemeProvider theme={theme === "light" ? light : dark}>
-      <NavigationContainer>
+      <NavigationContainer
+        theme={{
+          ...DefaultTheme,
+          colors: {
+            ...DefaultTheme.colors,
+            background: theme==='light' ? light.mainBackground : dark.mainBackground,
+          },
+        }}
+      >
         <Stack />
       </NavigationContainer>
       <StatusBar />
