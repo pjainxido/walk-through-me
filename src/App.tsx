@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Appearance, ColorSchemeName } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import styled, { ThemeProvider } from 'styled-components/native';
+import { ThemeProvider } from 'styled-components/native';
 import { light, dark } from '@styles/theme';
 import Stack from './navigation/Stack';
 

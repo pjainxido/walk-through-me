@@ -1,4 +1,5 @@
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity} from 'react-native-gesture-handler';
+import { Text } from 'react-native';
 import styled from 'styled-components/native';
 
 export const NavButton= styled.TouchableOpacity`
@@ -7,3 +8,7 @@ export const NavButton= styled.TouchableOpacity`
   background-color: ${({theme})=> theme.subColor};
   color: ${({ theme }) => theme.primaryText};
 `;
+
+export const DefaultText = styled.Text`
+  color: ${({ theme }) => theme.primaryText};
+`

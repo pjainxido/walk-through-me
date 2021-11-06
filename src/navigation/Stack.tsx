@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import Home from "@screen/Home";
-import Timer from "@screen/Timer";
-import Log from "@/screen/Log";
-import { Ionicons } from "@expo/vector-icons";
-import { ThemeContext } from "styled-components/native";
+import React, { useContext } from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from '@screen/Home';
+import Timer from '@screen/Timer';
+import Log from '@/screen/Log';
+import { Ionicons } from '@expo/vector-icons';
+import { ThemeContext } from 'styled-components/native';
 
 const Stack = createStackNavigator();
 
@@ -13,21 +13,29 @@ export default () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        gestureDirection: "horizontal",
+        gestureDirection: 'horizontal',
         headerTransparent: true,
         headerTintColor: themeContext.primaryText,
         headerBackTitleVisible: false,
         cardStyle: {
-          backgroundColor: themeContext.mainBackground,
+          backgroundColor: themeContext.mainBackground
         },
         headerBackImage: () => (
-          <Ionicons name='md-arrow-back' color={themeContext.primaryText} size={26} />
-        ),
+          <Ionicons
+            name="md-arrow-back"
+            color={themeContext.primaryText}
+            size={26}
+          />
+        )
       }}
     >
-      <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Timer' component={Timer} options={{headerShown: false}}/>
-      <Stack.Screen name='Log' component={Log} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen
+        name="Timer"
+        component={Timer}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Log" component={Log} />
     </Stack.Navigator>
   );
 };

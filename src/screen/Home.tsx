@@ -5,7 +5,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import ScreenLayout from '@/components/ScreenLayout';
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "./RootStackParams";
-import {NavButton} from '@components/common/NavButton'
+import {NavButton} from '@/components/common'
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, "Home">;
 
