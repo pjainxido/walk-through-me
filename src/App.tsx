@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useReducer } from 'react';
 import { Appearance, ColorSchemeName } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import 'react-native-gesture-handler';
+import { getItemFromAsync, setItemToAsync } from '@utils/common';
 import { ThemeProvider } from 'styled-components/native';
 import { light, dark } from '@styles/theme';
 import Stack from './navigation/Stack';
@@ -10,9 +11,21 @@ import Stack from './navigation/Stack';
 export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
   useEffect(() => {
-    Appearance.addChangeListener(({ colorScheme }) => {
-      setTheme(colorScheme === 'dark' ? 'dark' : 'light');
-    });
+    async function initalSetTheme() {
+      // setItemToAsync('theme', null);
+      const theme = await getItemFromAsync('theme');
+      console.log(theme);
+      if (theme === null) {
+        Appearance.addChangeListener(({ colorScheme }) => {
+          setTheme(colorScheme === 'dark' ? 'dark' : 'light');
+        });
+      } else {
+        setTheme(theme === 'dark' ? 'dark' : 'light');
+      }
+    }
+
+    initalSetTheme();
+
     return () => {};
   }, []);
 
