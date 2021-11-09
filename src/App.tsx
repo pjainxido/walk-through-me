@@ -12,7 +12,7 @@ export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
   useEffect(() => {
     async function initalSetTheme() {
-      // setItemToAsync('theme', null);
+      setItemToAsync('theme', null);
       const theme = await getItemFromAsync('theme');
       console.log(theme);
       if (theme === null) {

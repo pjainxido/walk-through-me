@@ -12,3 +12,10 @@ export const NavButton= styled.TouchableOpacity`
 export const DefaultText = styled.Text`
   color: ${({ theme }) => theme.primaryText};
 `
+
+export const TimerButton= styled.TouchableOpacity`
+  /* margin: 100px; */
+  padding: 20px;
+  background-color: ${({theme})=> theme.subColor};
+  color: ${({ theme }) => theme.primaryText};
+`;
