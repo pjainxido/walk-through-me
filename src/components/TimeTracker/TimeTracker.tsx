@@ -8,20 +8,6 @@ const TimeTracker: React.FC = () => {
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
-  const clockify = (sec: number) => {
-    let hours = Math.floor(sec / 60 / 60);
-    let mins = Math.floor((sec / 60) % 60);
-    let seconds = Math.floor(sec % 60);
-    let displayHours = hours < 10 ? `0${hours}` : hours;
-    let displayMins = mins < 10 ? `0${mins}` : mins;
-    let displaySecs = seconds < 10 ? `0${seconds}` : seconds;
-    return {
-      displayHours,
-      displayMins,
-      displaySecs
-    };
-  };
-
   const startTimer = () => {
     BackgroundTimer.runBackgroundTimer(() => {
       setTime((secs) => {
@@ -50,11 +36,7 @@ const TimeTracker: React.FC = () => {
 
   return (
     <View>
-      <TimeViewer
-        hours={clockify(time).displayHours}
-        mins={clockify(time).displayMins}
-        seconds={clockify(time).displaySecs}
-      />
+      <TimeViewer second={time} />
       <TimerButton onPress={toggleTimer}>
         <Text>start/stop</Text>
       </TimerButton>
