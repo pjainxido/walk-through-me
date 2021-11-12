@@ -14,8 +14,7 @@ export const DefaultText = styled.Text`
 `
 
 export const TimerButton= styled.TouchableOpacity`
-  /* margin: 100px; */
   padding: 20px;
-  background-color: ${({theme})=> theme.subColor};
+  /* background-color: ${({theme})=> theme.subColor}; */
   color: ${({ theme }) => theme.primaryText};
 `;

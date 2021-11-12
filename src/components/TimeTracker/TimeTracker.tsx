@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback
+} from 'react-native';
 import TimeViewer from './TimeViewer';
-import { TimerButton } from '@components/common';
+import { MaterialIcons } from '@expo/vector-icons';
+import { TimerButton, DefaultText } from '@components/common';
+import { ThemeContext } from 'styled-components/native';
 
 const TimeTracker: React.FC = () => {
+  const themeContext = useContext(ThemeContext);
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
@@ -35,16 +44,36 @@ const TimeTracker: React.FC = () => {
   };
 
   return (
-    <View>
-      <TimeViewer second={time} />
-      <TimerButton onPress={toggleTimer}>
-        <Text>start/stop</Text>
-      </TimerButton>
-      <TimerButton onPress={resetTimer}>
-        <Text>reset</Text>
-      </TimerButton>
+    <View style={{ flex: 1, top: 30 }}>
+      <BackGroundTouchable onPress={toggleTimer}>
+        <View>
+          <TimeViewer second={time} />
+
+          <ToggleTimerText>
+            {timerOn ? '탭하여 타이머 시작' : '탭하여 타이머 일시정지'}
+          </ToggleTimerText>
+          <TimerButton onPress={resetTimer}>
+            <MaterialIcons name="close" size={24} color={themeContext.primaryText}/>
+            <DefaultText>타이머 초기화</DefaultText>
+          </TimerButton>
+          <TimerButton onPress={resetTimer}>
+            <MaterialIcons name="done" size={24} color={themeContext.primaryText}/>
+            <DefaultText>로그 저장</DefaultText>
+          </TimerButton>
+          <TimerButton onPress={resetTimer}>
+            <MaterialIcons name="directions-walk" size={24} color={themeContext.primaryText}/>
+            <DefaultText>위치 트래킹 활성화</DefaultText>
+          </TimerButton>
+        </View>
+      </BackGroundTouchable>
     </View>
   );
 };
+
+const BackGroundTouchable = styled.TouchableHighlight``;
+
+const ToggleTimerText = styled.Text`
+  color: ${({ theme }) => theme.primaryText};
+`;
 
 export default TimeTracker;
