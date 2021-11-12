@@ -44,36 +44,75 @@ const TimeTracker: React.FC = () => {
   };
 
   return (
-    <View style={{ flex: 1, top: 30 }}>
-      <BackGroundTouchable onPress={toggleTimer}>
-        <View>
-          <TimeViewer second={time} />
-
-          <ToggleTimerText>
-            {timerOn ? '탭하여 타이머 시작' : '탭하여 타이머 일시정지'}
-          </ToggleTimerText>
+    <BackGroundTouchable onPress={toggleTimer}>
+      <View>
+        <TimerHeader>
           <TimerButton onPress={resetTimer}>
-            <MaterialIcons name="close" size={24} color={themeContext.primaryText}/>
+            <IconView>
+              <MaterialIcons
+                name="close"
+                size={24}
+                color={themeContext.primaryText}
+              />
+            </IconView>
             <DefaultText>타이머 초기화</DefaultText>
           </TimerButton>
           <TimerButton onPress={resetTimer}>
-            <MaterialIcons name="done" size={24} color={themeContext.primaryText}/>
+            <IconView>
+              <MaterialIcons
+                name="done"
+                size={24}
+                color={themeContext.primaryText}
+              />
+            </IconView>
             <DefaultText>로그 저장</DefaultText>
           </TimerButton>
           <TimerButton onPress={resetTimer}>
-            <MaterialIcons name="directions-walk" size={24} color={themeContext.primaryText}/>
-            <DefaultText>위치 트래킹 활성화</DefaultText>
+            <IconView>
+              <MaterialIcons
+                name="directions-walk"
+                size={24}
+                color={themeContext.primaryText}
+              />
+            </IconView>
+            <DefaultText>트래킹 활성화</DefaultText>
           </TimerButton>
-        </View>
-      </BackGroundTouchable>
-    </View>
+        </TimerHeader>
+        <TimerContainer>
+          <TimeViewer second={time} />
+          <ToggleTimerText>
+            {timerOn ? '탭하여 타이머 시작' : '탭하여 타이머 일시정지'}
+          </ToggleTimerText>
+        </TimerContainer>
+      </View>
+    </BackGroundTouchable>
   );
 };
 
-const BackGroundTouchable = styled.TouchableHighlight``;
+const BackGroundTouchable = styled.TouchableHighlight`
+  flex: 1;
+`;
 
 const ToggleTimerText = styled.Text`
   color: ${({ theme }) => theme.primaryText};
+`;
+
+const IconView = styled.View`
+  margin-bottom: 15px;
+`;
+
+const TimerHeader = styled.View`
+  flex: 1;
+  top: 30px;
+  height: 20px;
+  flex-direction: row;
+`;
+
+const TimerContainer = styled.View`
+  flex: 8;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;
 
 export default TimeTracker;

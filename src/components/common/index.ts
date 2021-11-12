@@ -17,4 +17,6 @@ export const TimerButton= styled.TouchableOpacity`
   padding: 20px;
   /* background-color: ${({theme})=> theme.subColor}; */
   color: ${({ theme }) => theme.primaryText};
+  justify-content: center;
+  align-items: center;
 `;
