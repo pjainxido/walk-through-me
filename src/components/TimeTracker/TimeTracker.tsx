@@ -17,20 +17,28 @@ const TimeTracker: React.FC = () => {
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
+
   const startTimer = () => {
+    console.log('start timer');
     BackgroundTimer.runBackgroundTimer(() => {
       setTime((secs) => {
-        return secs + 1;
+        return secs +0.01;
       });
-    }, 1000);
+    }, 10);
+  };
+
+  const stopTimer = () => {
+    console.log('stop')
+    BackgroundTimer.stopBackgroundTimer();
   };
 
   useEffect(() => {
+    console.log(timerOn);
     if (timerOn) startTimer();
-    else BackgroundTimer.stopBackgroundTimer();
+    else stopTimer();
 
     return () => {
-      BackgroundTimer.stopBackgroundTimer();
+      stopTimer();
     };
   }, [timerOn]);
 
@@ -81,7 +89,7 @@ const TimeTracker: React.FC = () => {
         <TimerContainer>
           <TimeViewer second={time} />
           <ToggleTimerText>
-            {timerOn ? '탭하여 타이머 시작' : '탭하여 타이머 일시정지'}
+            {timerOn ? '탭하여 타이머 일시정지': '탭하여 타이머 시작' }
           </ToggleTimerText>
         </TimerContainer>
       </View>

@@ -14,12 +14,12 @@ const Timer = () => {
   return (
     <ScreenLayout>
       <TimeTracker/>
-      {/* <NavButton onPress={() => navigation.navigate("Timer")}>
+      <NavButton onPress={() => navigation.navigate("Timer")}>
         <Text>Timer</Text>
       </NavButton>
       <NavButton onPress={() => navigation.navigate("Log")}>
         <Text>Log</Text>
-      </NavButton> */}
+      </NavButton>
     </ScreenLayout>
   );
 };
