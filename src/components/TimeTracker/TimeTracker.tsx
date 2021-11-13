@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableWithoutFeedback
-} from 'react-native';
+import { View } from 'react-native';
 import TimeViewer from './TimeViewer';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TimerButton, DefaultText } from '@components/common';
@@ -17,42 +12,39 @@ const TimeTracker: React.FC = () => {
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
 
-
   const startTimer = () => {
     console.log('start timer');
+    setTimerOn(true);
     BackgroundTimer.runBackgroundTimer(() => {
       setTime((secs) => {
-        return secs +0.01;
+        return secs + 0.01;
       });
     }, 10);
   };
 
+  const toggleTimer = (timerOn: boolean) => {
+    timerOn ? stopTimer() : startTimer();
+  }
+
   const stopTimer = () => {
-    console.log('stop')
+    console.log('stop');
+    setTimerOn(false);
     BackgroundTimer.stopBackgroundTimer();
   };
 
   useEffect(() => {
-    console.log(timerOn);
-    if (timerOn) startTimer();
-    else stopTimer();
-
     return () => {
       stopTimer();
     };
-  }, [timerOn]);
-
-  const toggleTimer = () => {
-    setTimerOn((prev) => !prev);
-  };
+  }, []);
 
   const resetTimer = () => {
-    setTimerOn(false);
     setTime(0);
+    stopTimer();
   };
 
   return (
-    <BackGroundTouchable onPress={toggleTimer}>
+    <BackGroundTouchable onPress={()=>toggleTimer(timerOn)}>
       <View>
         <TimerHeader>
           <TimerButton onPress={resetTimer}>
@@ -89,7 +81,7 @@ const TimeTracker: React.FC = () => {
         <TimerContainer>
           <TimeViewer second={time} />
           <ToggleTimerText>
-            {timerOn ? '탭하여 타이머 일시정지': '탭하여 타이머 시작' }
+            {timerOn ? '탭하여 타이머 일시정지' : '탭하여 타이머 시작'}
           </ToggleTimerText>
         </TimerContainer>
       </View>
