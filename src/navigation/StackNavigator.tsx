@@ -30,12 +30,12 @@ export default () => {
       }}
     >
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Timer"
         component={Timer}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Log" component={Log} />
+      <Stack.Screen name="Log" component={Log} /> */}
     </Stack.Navigator>
   );
 };

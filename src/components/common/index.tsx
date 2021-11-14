@@ -1,5 +1,6 @@
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Text, ActivityIndicator, SafeAreaView } from 'react-native';
+import { Text, SafeAreaView } from 'react-native';
+import ScreenLayout from './ScreenLayout';
 import styled from 'styled-components/native';
 
 export const NavButton = styled.TouchableOpacity`
@@ -21,23 +22,4 @@ export const TimerButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
-interface ScreenLayoutProps {
-  loading?: boolean;
-}
-
-export const ScreenLayout: React.FC<ScreenLayoutProps> = ({
-  loading = false,
-  children
-}) => {
-  return (
-    <Container>
-      {loading ? <ActivityIndicator color="white" /> : children}
-    </Container>
-  );
-};
-
-const Container = styled.SafeAreaView`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
+export { ScreenLayout };

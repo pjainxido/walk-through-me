@@ -1,6 +1,6 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import {ThemeContext} from 'styled-components/native';
 import StackNavigator from './StackNavigator';
 import {
   HomeScreen,
@@ -12,11 +12,27 @@ import {
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
+  const themeContext = useContext(ThemeContext);
   return (
-    <Drawer.Navigator initialRouteName="Home">
+    <Drawer.Navigator
+      screenOptions={{
+        headerShown: false,
+        overlayColor: 'transparent',
+        drawerActiveBackgroundColor: themeContext.subColor,
+        drawerActiveTintColor: themeContext.mainBackground,
+        drawerInactiveTintColor: themeContext.primaryText,
+        drawerType: 'back',
+        drawerPosition: 'right',
+        drawerStyle: {
+          backgroundColor: themeContext.mainBackground,
+          width: 200 
+        },
+      }}
+      initialRouteName="Main"
+    >
       <Drawer.Screen
-        name="Home"
-       component={HomeScreen}
+        name="Main"
+        component={StackNavigator}
         options={{ drawerLabel: 'HOME' }}
       />
       <Drawer.Screen

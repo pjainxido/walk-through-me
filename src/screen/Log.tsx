@@ -3,8 +3,8 @@ import { Text } from "react-native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "./RootStackParams";
-import ScreenLayout from "@/components/common/ScreenLayout";
-import { NavButton, DefaultText } from "@/components/common";
+// import ScreenLayout from "@/components/common/ScreenLayout";
+import { NavButton, DefaultText, ScreenLayout } from "@/components/common";
 
 type LogScreenProp = StackNavigationProp<RootStackParamList, "Log">;
 
