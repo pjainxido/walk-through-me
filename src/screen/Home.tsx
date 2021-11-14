@@ -2,7 +2,7 @@ import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import styled from "styled-components/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import ScreenLayout from '@/components/ScreenLayout';
+import ScreenLayout from '@/components/common/ScreenLayout';
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "./RootStackParams";
 import {NavButton} from '@/components/common'

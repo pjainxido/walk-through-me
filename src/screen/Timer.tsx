@@ -4,7 +4,7 @@ import TimeTracker from '@/components/TimeTracker';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "./RootStackParams";
-import ScreenLayout from "@components/ScreenLayout";
+import ScreenLayout from "@/components/common/ScreenLayout";
 import { NavButton } from "@components/common";
 
 type TimerScreenProp = StackNavigationProp<RootStackParamList, "Timer">;
