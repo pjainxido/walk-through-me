@@ -45,7 +45,7 @@ const TimeTracker: React.FC = () => {
 
   return (
     <BackGroundTouchable onPress={()=>toggleTimer(timerOn)}>
-      <View>
+      <Container>
         <TimerHeader>
           <TimerButton onPress={resetTimer}>
             <IconView>
@@ -84,14 +84,21 @@ const TimeTracker: React.FC = () => {
             {timerOn ? '탭하여 타이머 일시정지' : '탭하여 타이머 시작'}
           </ToggleTimerText>
         </TimerContainer>
-      </View>
+      </Container>
     </BackGroundTouchable>
   );
 };
 
 const BackGroundTouchable = styled.TouchableHighlight`
   flex: 1;
+  width: 100%;
+  align-items: center;
 `;
+
+const Container = styled.View`
+  flex: 1;
+  /* width: 100%; */
+`
 
 const ToggleTimerText = styled.Text`
   color: ${({ theme }) => theme.primaryText};
@@ -112,7 +119,6 @@ const TimerContainer = styled.View`
   flex: 8;
   justify-content: center;
   align-items: center;
-  width: 100%;
 `;
 
 export default TimeTracker;

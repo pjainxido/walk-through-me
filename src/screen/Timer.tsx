@@ -1,5 +1,5 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import TimeTracker from '@/components/TimeTracker';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
@@ -14,12 +14,12 @@ const Timer = () => {
   return (
     <ScreenLayout>
       <TimeTracker/>
-      <NavButton onPress={() => navigation.navigate("Timer")}>
+      {/* <NavButton onPress={() => navigation.navigate("Timer")}>
         <Text>Timer</Text>
       </NavButton>
       <NavButton onPress={() => navigation.navigate("Log")}>
         <Text>Log</Text>
-      </NavButton>
+      </NavButton> */}
     </ScreenLayout>
   );
 };
