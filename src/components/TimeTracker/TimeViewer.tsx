@@ -17,7 +17,6 @@ const TimeViewer: React.FC<TimeViewerProps> = ({ second }) => {
     let displayMins = mins < 10 ? `0${mins}` : mins;
     let displaySecs = seconds < 10 ? `0${seconds}` : seconds;
     return { displayHours, displayMins, displaySecs, displayDecimal };
-    // return `${displayHours} : ${displayMins} : ${displaySecs}.${displayDecimal}`;
   };
   return (
     <TimeContainer>
@@ -26,7 +25,7 @@ const TimeViewer: React.FC<TimeViewerProps> = ({ second }) => {
       <TimeText>{clockify(second).displayMins}</TimeText>
       <TimeDivider>:</TimeDivider>
       <TimeText>{clockify(second).displaySecs}</TimeText>
-      <TimeDivider>.</TimeDivider>
+      <TimeDivider>,</TimeDivider>
       <TimeText>{clockify(second).displayDecimal}</TimeText>
     </TimeContainer>
   );

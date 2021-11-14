@@ -2,10 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
 import { View } from 'react-native';
-import TimeViewer from './TimeViewer';
-import { MaterialIcons } from '@expo/vector-icons';
-import { TimerButton, DefaultText } from '@components/common';
 import { ThemeContext } from 'styled-components/native';
+
+import TimeViewer from './TimeViewer';
+import { TimerButton, DefaultText } from '@components/common';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const TimeTracker: React.FC = () => {
   const themeContext = useContext(ThemeContext);

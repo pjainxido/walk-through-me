@@ -6,7 +6,8 @@ import 'react-native-gesture-handler';
 import { getItemFromAsync, setItemToAsync } from '@utils/common';
 import { ThemeProvider } from 'styled-components/native';
 import { light, dark } from '@styles/theme';
-import Stack from './navigation/Stack';
+import StackNavigator from './navigation/StackNavigator';
+import DrawerNavigator from './navigation/DrawerNavigator';
 
 export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
@@ -42,7 +43,8 @@ export const App = () => {
           }
         }}
       >
-        <Stack />
+        {/* <StackNavigator /> */}
+        <DrawerNavigator />
       </NavigationContainer>
       <StatusBar />
     </ThemeProvider>
