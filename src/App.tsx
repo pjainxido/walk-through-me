@@ -10,22 +10,23 @@ import Stack from './navigation/Stack';
 
 export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
+
+  const syncThemeByDeviceSetting = () => {
+    Appearance.addChangeListener(({ colorScheme }) => {
+      setTheme(colorScheme === 'dark' ? 'dark' : 'light');
+    });
+  };
+
   useEffect(() => {
     async function initalSetTheme() {
       setItemToAsync('theme', null);
       const theme = await getItemFromAsync('theme');
       console.log(theme);
-      if (theme === null) {
-        Appearance.addChangeListener(({ colorScheme }) => {
-          setTheme(colorScheme === 'dark' ? 'dark' : 'light');
-        });
-      } else {
-        setTheme(theme === 'dark' ? 'dark' : 'light');
-      }
+      theme === null
+        ? syncThemeByDeviceSetting()
+        : setTheme(theme === 'dark' ? 'dark' : 'light');
     }
-
     initalSetTheme();
-
     return () => {};
   }, []);
 
