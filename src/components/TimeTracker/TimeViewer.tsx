@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/native';
 import { View, Text } from 'react-native';
 
@@ -45,6 +45,6 @@ const TimeDivider = styled.Text`
   font-size: 42px;
   width: 10px;
   color: ${({ theme }) => theme.primaryText};
-`
+`;
 
 export default TimeViewer;

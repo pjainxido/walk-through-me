@@ -25,7 +25,7 @@ const TimeTracker: React.FC = () => {
 
   const toggleTimer = (timerOn: boolean) => {
     timerOn ? stopTimer() : startTimer();
-  }
+  };
 
   const stopTimer = () => {
     console.log('stop');
@@ -45,7 +45,7 @@ const TimeTracker: React.FC = () => {
   };
 
   return (
-    <BackGroundTouchable onPress={()=>toggleTimer(timerOn)}>
+    <BackGroundTouchable onPress={() => toggleTimer(timerOn)}>
       <Container>
         <TimerHeader>
           <TimerButton onPress={resetTimer}>
@@ -99,7 +99,7 @@ const BackGroundTouchable = styled.TouchableHighlight`
 const Container = styled.View`
   flex: 1;
   /* width: 100%; */
-`
+`;
 
 const ToggleTimerText = styled.Text`
   color: ${({ theme }) => theme.primaryText};
