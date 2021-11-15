@@ -66,14 +66,14 @@ const Tracker: React.FC = () => {
         <TimerHeader>
           <TimerButton onPress={saveTrackerData}>
             <IconView>
-              <SaveTrackerIcon size={24} defaultColor={primaryText} />
+              <SaveTrackerIcon size={36} defaultColor={primaryText} />
             </IconView>
             <DefaultText>로그 저장</DefaultText>
           </TimerButton>
           <TimerButton onPress={toggleGPSTracker}>
             <IconView>
               <GPSTrackerIcon
-                size={24}
+                size={36}
                 focused={gpsTrackerOn}
                 defaultColor={subBackground}
                 focusedColor={subColor}
@@ -85,7 +85,7 @@ const Tracker: React.FC = () => {
           </TimerButton>
           <TimerButton onPress={resetTracker}>
             <IconView>
-              <ResetTrackerIcon size={24} defaultColor={primaryText} />
+              <ResetTrackerIcon size={36} defaultColor={primaryText} />
             </IconView>
             <DefaultText>타이머 초기화</DefaultText>
           </TimerButton>
@@ -101,7 +101,7 @@ const Tracker: React.FC = () => {
   );
 };
 
-const BackGroundTouchable = styled.TouchableHighlight`
+const BackGroundTouchable = styled.TouchableOpacity`
   flex: 1;
   width: 100%;
   align-items: center;
@@ -109,7 +109,6 @@ const BackGroundTouchable = styled.TouchableHighlight`
 
 const Container = styled.View`
   flex: 1;
-  /* width: 100%; */
 `;
 
 const ToggleTimerText = styled.Text`
