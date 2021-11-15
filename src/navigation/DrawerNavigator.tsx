@@ -1,10 +1,9 @@
 import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import useTheme from '@/utils/hooks/useTheme';
 import StackNavigator from './StackNavigator';
 import { SettingScreen, LogScreen, TrakerScreen } from '@screen/index';
-import { HomeIcon } from '@/components/common/icons';
+import { HomeIcon, TrackerIcon, LogIcon, SettingIcon } from '@/components/common/icons';
 
 const Drawer = createDrawerNavigator();
 
@@ -48,10 +47,11 @@ const DrawerNavigator = () => {
         options={{
           drawerLabel: 'Traker',
           drawerIcon: ({ focused, size }) => (
-            <MaterialIcons
-              name="done"
+            <TrackerIcon
               size={size}
-              color={focused ? primaryText : subColor}
+              focused={focused}
+              defaultColor={primaryText}
+              focusedColor={mainBackground}
             />
           )
         }}
@@ -62,10 +62,11 @@ const DrawerNavigator = () => {
         options={{
           drawerLabel: 'Log',
           drawerIcon: ({ focused, size }) => (
-            <MaterialIcons
-              name="done"
+            <LogIcon
               size={size}
-              color={focused ? primaryText : subColor}
+              focused={focused}
+              defaultColor={primaryText}
+              focusedColor={mainBackground}
             />
           )
         }}
@@ -76,10 +77,11 @@ const DrawerNavigator = () => {
         options={{
           drawerLabel: 'Setting',
           drawerIcon: ({ focused, size }) => (
-            <MaterialIcons
-              name="done"
+            <SettingIcon
               size={size}
-              color={focused ? primaryText : subColor}
+              focused={focused}
+              defaultColor={primaryText}
+              focusedColor={mainBackground}
             />
           )
         }}

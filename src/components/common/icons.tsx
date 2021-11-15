@@ -37,6 +37,21 @@ export const LogIcon: React.FC<iconProps> = ({
   );
 };
 
+export const SettingIcon: React.FC<iconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name="settings"
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};
+
 export const TrackerIcon: React.FC<iconProps> = ({
   focused,
   defaultColor,
