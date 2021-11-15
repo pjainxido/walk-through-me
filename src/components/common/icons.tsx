@@ -51,3 +51,48 @@ export const TrackerIcon: React.FC<iconProps> = ({
     />
   );
 };
+
+export const SaveTrackerIcon: React.FC<iconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name="done"
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};
+
+export const ResetTrackerIcon: React.FC<iconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name="close"
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};
+
+export const GPSTrackerIcon: React.FC<iconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name="directions-walk"
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};

@@ -16,6 +16,7 @@ export const DefaultText = styled.Text`
 `;
 
 export const TimerButton = styled.TouchableOpacity`
+  flex: 1;
   padding: 20px;
   color: ${({ theme }) => theme.primaryText};
   justify-content: center;

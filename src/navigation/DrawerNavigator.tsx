@@ -3,19 +3,13 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import useTheme from '@/utils/hooks/useTheme';
 import StackNavigator from './StackNavigator';
-import {
-  HomeScreen,
-  SettingScreen,
-  LogScreen,
-  TrakerScreen,
-} from '@screen/index';
+import { SettingScreen, LogScreen, TrakerScreen } from '@screen/index';
 import { HomeIcon } from '@/components/common/icons';
 
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
-  
-  const { primaryText, subColor, mainBackground , subBackground} = useTheme();
+  const { primaryText, subColor, mainBackground, subBackground } = useTheme();
   return (
     <Drawer.Navigator
       screenOptions={{

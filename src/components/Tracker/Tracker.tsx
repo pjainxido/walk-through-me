@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
-import { View } from 'react-native';
 import useTheme from '@/utils/hooks/useTheme';
 import TimeViewer from './TimeViewer';
 import { TimerButton, DefaultText } from '@components/common';
-import { MaterialIcons } from '@expo/vector-icons';
+import {
+  SaveTrackerIcon,
+  ResetTrackerIcon,
+  GPSTrackerIcon
+} from '@components/common/icons';
 
 const Tracker: React.FC = () => {
-  const { mainBackground, background, primaryText, subColor } = useTheme();
+  const { primaryText, subBackground, subColor } = useTheme();
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
+  const [gpsTrackerOn, setGpsTrackerOn] = useState<boolean>(false);
 
   const startTimer = () => {
     console.log('start timer');
@@ -20,6 +24,10 @@ const Tracker: React.FC = () => {
         return secs + 0.01;
       });
     }, 10);
+  };
+
+  const toggleGPSTracker = () => {
+    setGpsTrackerOn((prev) => !prev);
   };
 
   const toggleTimer = (timerOn: boolean) => {
@@ -49,23 +57,26 @@ const Tracker: React.FC = () => {
         <TimerHeader>
           <TimerButton onPress={resetTimer}>
             <IconView>
-              <MaterialIcons name="done" size={24} color={primaryText} />
+              <SaveTrackerIcon size={24} defaultColor={primaryText} />
             </IconView>
             <DefaultText>로그 저장</DefaultText>
           </TimerButton>
-          <TimerButton onPress={resetTimer}>
+          <TimerButton onPress={toggleGPSTracker}>
             <IconView>
-              <MaterialIcons
-                name="directions-walk"
+              <GPSTrackerIcon
                 size={24}
-                color={primaryText}
+                focused={gpsTrackerOn}
+                defaultColor={subBackground}
+                focusedColor={subColor}
               />
             </IconView>
-            <DefaultText>트래킹 활성화</DefaultText>
+            <DefaultText>
+              {gpsTrackerOn ? 'GPS 정보 기록중 ' : '탭하여 위치 기록'}
+            </DefaultText>
           </TimerButton>
           <TimerButton onPress={resetTimer}>
             <IconView>
-              <MaterialIcons name="close" size={24} color={primaryText} />
+              <ResetTrackerIcon size={24} defaultColor={primaryText} />
             </IconView>
             <DefaultText>타이머 초기화</DefaultText>
           </TimerButton>
@@ -104,6 +115,7 @@ const TimerHeader = styled.View`
   flex: 1;
   top: 30px;
   height: 20px;
+  width: 100%;
   flex-direction: row;
 `;
 
