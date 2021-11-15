@@ -15,7 +15,7 @@ const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   
-  const { primaryText, subColor, mainBackground} = useTheme();
+  const { primaryText, subColor, mainBackground , subBackground} = useTheme();
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -27,7 +27,7 @@ const DrawerNavigator = () => {
         drawerType: 'back',
         drawerPosition: 'right',
         drawerStyle: {
-          backgroundColor: mainBackground,
+          backgroundColor: subBackground,
           width: 200
         }
       }}
