@@ -1,29 +1,29 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '@screen/Home';
 import Timer from '@screen/Timer';
 import Log from '@/screen/Log';
 import { Ionicons } from '@expo/vector-icons';
-import { ThemeContext } from 'styled-components/native';
+import useTheme from '@/utils/hooks/useTheme';
 
 const Stack = createStackNavigator();
 
 export default () => {
-  const themeContext = useContext(ThemeContext);
+  const {primaryText, mainBackground} = useTheme();
   return (
     <Stack.Navigator
       screenOptions={{
         gestureDirection: 'horizontal',
         headerTransparent: true,
-        headerTintColor: themeContext.primaryText,
+        headerTintColor: primaryText,
         headerBackTitleVisible: false,
         cardStyle: {
-          backgroundColor: themeContext.mainBackground
+          backgroundColor: mainBackground
         },
         headerBackImage: () => (
           <Ionicons
             name="md-arrow-back"
-            color={themeContext.primaryText}
+            color={primaryText}
             size={26}
           />
         )
