@@ -37,13 +37,12 @@ const TimeContainer = styled.View`
 
 const TimeText = styled.Text`
   font-size: 42px;
-  width: 60px;
+  min-width: 55px;
   color: ${({ theme }) => theme.primaryText};
 `;
 
 const TimeDivider = styled.Text`
   font-size: 42px;
-  width: 10px;
   color: ${({ theme }) => theme.primaryText};
 `;
 

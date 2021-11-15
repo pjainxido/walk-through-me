@@ -12,7 +12,7 @@ import {
 
 const Tracker: React.FC = () => {
   const { primaryText, subBackground, subColor } = useTheme();
-  const [time, setTime] = useState<number>(0);
+  const [time, setTime] = useState<number>(1000000);
   const [timerOn, setTimerOn] = useState<boolean>(false);
   const [gpsTrackerOn, setGpsTrackerOn] = useState<boolean>(false);
 
@@ -46,16 +46,25 @@ const Tracker: React.FC = () => {
     };
   }, []);
 
-  const resetTimer = () => {
+  const resetTracker = () => {
     setTime(0);
     stopTimer();
+  };
+
+  const saveTrackerData = () => {
+    stopTimer();
+    //data 저장 관련 modal pop up
+    //if save
+    resetTracker(); // 모달에서 저장후 데이터 초기화
+    //if not save
+    //미저장시 트래커 재개
   };
 
   return (
     <BackGroundTouchable onPress={() => toggleTimer(timerOn)}>
       <Container>
         <TimerHeader>
-          <TimerButton onPress={resetTimer}>
+          <TimerButton onPress={saveTrackerData}>
             <IconView>
               <SaveTrackerIcon size={24} defaultColor={primaryText} />
             </IconView>
@@ -71,10 +80,10 @@ const Tracker: React.FC = () => {
               />
             </IconView>
             <DefaultText>
-              {gpsTrackerOn ? 'GPS 정보 기록중 ' : '탭하여 위치 기록'}
+              {gpsTrackerOn ? 'GPS 정보 기록중' : '탭하여 위치 기록'}
             </DefaultText>
           </TimerButton>
-          <TimerButton onPress={resetTimer}>
+          <TimerButton onPress={resetTracker}>
             <IconView>
               <ResetTrackerIcon size={24} defaultColor={primaryText} />
             </IconView>
