@@ -21,3 +21,33 @@ export const HomeIcon: React.FC<iconProps> = ({
     />
   );
 };
+
+export const LogIcon: React.FC<iconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name="developer-board"
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};
+
+export const TrackerIcon: React.FC<iconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name="timer"
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};

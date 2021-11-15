@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from './RootStackParams';
 import { MaterialIcons } from '@expo/vector-icons';
 import useTheme from '@/utils/hooks/useTheme';
+import { LogIcon, TrackerIcon } from '@/components/common/icons';
 import { NavButton } from '@/components/common';
 
 type homeScreenProp = StackNavigationProp<RootStackParamList, 'Home'>;
@@ -17,11 +18,11 @@ const Home = () => {
 
   return (
     <ScreenLayout>
-      <NavButton onPress={() => navigation.navigate('Timer')}>
-        <MaterialIcons name="timer" size={24} color={primaryText} />
+      <NavButton onPress={() => navigation.navigate('Traker')}>
+        <TrackerIcon size={24} defaultColor={primaryText} />
       </NavButton>
       <NavButton onPress={() => navigation.navigate('Log')}>
-        <MaterialIcons name="developer-board" size={24} color={primaryText} />
+        <LogIcon size={24} defaultColor={primaryText} />
       </NavButton>
     </ScreenLayout>
   );

@@ -7,9 +7,9 @@ import { RootStackParamList } from "./RootStackParams";
 import ScreenLayout from "@/components/common/ScreenLayout";
 import { NavButton } from "@components/common";
 
-type TimerScreenProp = StackNavigationProp<RootStackParamList, "Timer">;
+type TimerScreenProp = StackNavigationProp<RootStackParamList, "Traker">;
 
-const Timer = () => {
+const Traker= () => {
   const navigation = useNavigation<TimerScreenProp>();
   return (
     <ScreenLayout>
@@ -24,4 +24,4 @@ const Timer = () => {
   );
 };
 
-export default Timer;
+export default Traker;

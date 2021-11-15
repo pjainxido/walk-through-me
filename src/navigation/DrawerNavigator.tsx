@@ -7,7 +7,7 @@ import {
   HomeScreen,
   SettingScreen,
   LogScreen,
-  TimerScreen
+  TrakerScreen,
 } from '@screen/index';
 import { HomeIcon } from '@/components/common/icons';
 
@@ -48,10 +48,10 @@ const DrawerNavigator = () => {
         }}
       />
       <Drawer.Screen
-        name="Timer"
-        component={TimerScreen}
+        name="Traker"
+        component={TrakerScreen}
         options={{
-          drawerLabel: 'Timer',
+          drawerLabel: 'Traker',
           drawerIcon: ({ focused, size }) => (
             <MaterialIcons
               name="done"

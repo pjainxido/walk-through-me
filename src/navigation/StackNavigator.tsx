@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '@screen/Home';
-import Timer from '@screen/Timer';
+import Timer from '@/screen/Traker';
 import Log from '@/screen/Log';
 import { Ionicons } from '@expo/vector-icons';
 import useTheme from '@/utils/hooks/useTheme';
