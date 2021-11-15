@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '@screen/Home';
-import Timer from '@/screen/Traker';
+import Tracker from '@/screen/Traker';
 import Log from '@/screen/Log';
 import { Ionicons } from '@expo/vector-icons';
 import useTheme from '@/utils/hooks/useTheme';
@@ -31,8 +31,8 @@ export default () => {
     >
       <Stack.Screen name="Home" component={Home} />
       {/* <Stack.Screen
-        name="Timer"
-        component={Timer}
+        name="Tracker"
+        component={Tracker}
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Log" component={Log} /> */}

@@ -14,6 +14,7 @@ import { HomeIcon } from '@/components/common/icons';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
+  
   const { primaryText, subColor, mainBackground} = useTheme();
   return (
     <Drawer.Navigator
