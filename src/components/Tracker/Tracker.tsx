@@ -3,12 +3,11 @@ import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
 import { View } from 'react-native';
 import { ThemeContext } from 'styled-components/native';
-
 import TimeViewer from './TimeViewer';
 import { TimerButton, DefaultText } from '@components/common';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const TimeTracker: React.FC = () => {
+const Tracker: React.FC = () => {
   const themeContext = useContext(ThemeContext);
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
@@ -51,16 +50,6 @@ const TimeTracker: React.FC = () => {
           <TimerButton onPress={resetTimer}>
             <IconView>
               <MaterialIcons
-                name="close"
-                size={24}
-                color={themeContext.primaryText}
-              />
-            </IconView>
-            <DefaultText>타이머 초기화</DefaultText>
-          </TimerButton>
-          <TimerButton onPress={resetTimer}>
-            <IconView>
-              <MaterialIcons
                 name="done"
                 size={24}
                 color={themeContext.primaryText}
@@ -77,6 +66,16 @@ const TimeTracker: React.FC = () => {
               />
             </IconView>
             <DefaultText>트래킹 활성화</DefaultText>
+          </TimerButton>
+          <TimerButton onPress={resetTimer}>
+            <IconView>
+              <MaterialIcons
+                name="close"
+                size={24}
+                color={themeContext.primaryText}
+              />
+            </IconView>
+            <DefaultText>타이머 초기화</DefaultText>
           </TimerButton>
         </TimerHeader>
         <TimerContainer>
@@ -122,4 +121,4 @@ const TimerContainer = styled.View`
   align-items: center;
 `;
 
-export default TimeTracker;
+export default Tracker;

@@ -4,7 +4,8 @@ import ScreenLayout from './ScreenLayout';
 import styled from 'styled-components/native';
 
 export const NavButton = styled.TouchableOpacity`
-  /* margin: 100px; */
+  margin: 50px;
+  border-radius: 10px;
   padding: 20px;
   background-color: ${({ theme }) => theme.subColor};
   color: ${({ theme }) => theme.primaryText};

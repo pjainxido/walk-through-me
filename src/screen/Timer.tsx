@@ -1,6 +1,6 @@
 import React from "react";
 import { Text, View } from "react-native";
-import TimeTracker from '@/components/TimeTracker';
+import Tracker from '@/components/Tracker';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "./RootStackParams";
@@ -13,7 +13,7 @@ const Timer = () => {
   const navigation = useNavigation<TimerScreenProp>();
   return (
     <ScreenLayout>
-      <TimeTracker/>
+      <Tracker/>
       {/* <NavButton onPress={() => navigation.navigate("Timer")}>
         <Text>Timer</Text>
       </NavButton>
