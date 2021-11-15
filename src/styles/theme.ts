@@ -2,7 +2,7 @@ import { DefaultTheme } from 'styled-components/native';
 
 export const light: DefaultTheme = {
   mainBackground: '#e3e6f2',
-  subBackground: '#2d2f34',
+  subBackground: '#b7c1df',
   primaryText: '#08050e',
   subColor: '#8899c9'
 };
