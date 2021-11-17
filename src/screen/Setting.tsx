@@ -1,4 +1,5 @@
 import React from 'react';
+import { getItemFromAsync, setItemToAsync } from '@utils/common';
 import { DefaultText, ScreenLayout } from '@/components/common';
 
 const Setting = () => {
