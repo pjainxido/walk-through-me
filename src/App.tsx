@@ -11,22 +11,27 @@ import DrawerNavigator from './navigation/DrawerNavigator';
 export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
 
-  const syncThemeByDeviceSetting = () => {
-    const deviceTheme = Appearance.getColorScheme();
-    setTheme(deviceTheme === 'light' ? 'light' : 'dark');
+  const syncThemeByDeviceSetting = ({
+    colorScheme
+  }: Appearance.AppearancePreferences) => {
+    if (!theme) setTheme(colorScheme);
   };
 
   useEffect(() => {
     async function initalSetTheme() {
       setItemToAsync('theme', null);
-      const theme = await getItemFromAsync('theme');
-      console.log(theme);
+      const asyncStoreTheme = await getItemFromAsync('theme');
+      const deviceTheme = Appearance.getColorScheme();
+      console.log(asyncStoreTheme);
       theme === null
-        ? syncThemeByDeviceSetting()
+        ? setTheme(deviceTheme)
         : setTheme(theme === 'dark' ? 'dark' : 'light');
     }
     initalSetTheme();
-    return () => {};
+    Appearance.addChangeListener(syncThemeByDeviceSetting);
+    return () => {
+      Appearance.removeChangeListener(syncThemeByDeviceSetting);
+    };
   }, []);
 
   return (
