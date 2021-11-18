@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect, createContext, useReducer } from 'react';
-import { Appearance, ColorSchemeName } from 'react-native';
+import { Appearance, ColorSchemeName, useColorScheme } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 import { getItemFromAsync, setItemToAsync } from '@utils/common';
@@ -12,9 +12,8 @@ export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
 
   const syncThemeByDeviceSetting = () => {
-    Appearance.addChangeListener(({ colorScheme }) => {
-      setTheme(colorScheme === 'dark' ? 'dark' : 'light');
-    });
+    const deviceTheme = Appearance.getColorScheme();
+    setTheme(deviceTheme === 'light' ? 'light' : 'dark');
   };
 
   useEffect(() => {
