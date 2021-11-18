@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '@screen/Home';
 import { Ionicons } from '@expo/vector-icons';
 import useTheme from '@/utils/hooks/useTheme';
+import { LogScreen, TrakerScreen } from '@/screen';
 
 const Stack = createStackNavigator();
 
@@ -28,12 +29,12 @@ export default () => {
       }}
     >
       <Stack.Screen name="Home" component={Home} />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Tracker"
-        component={Tracker}
+        component={TrakerScreen}
         options={{ headerShown: false }}
       />
-      <Stack.Screen name="Log" component={Log} /> */}
+      <Stack.Screen name="Log" component={LogScreen} />
     </Stack.Navigator>
   );
 };

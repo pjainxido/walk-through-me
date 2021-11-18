@@ -1,8 +1,5 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - CocoaLumberjack (3.7.2):
-    - CocoaLumberjack/Core (= 3.7.2)
-  - CocoaLumberjack/Core (3.7.2)
   - DoubleConversion (1.1.6)
   - EXApplication (3.2.0):
     - UMCore
@@ -295,9 +292,6 @@ PODS:
     - React-jsi (= 0.63.4)
   - RNBackgroundFetch (4.0.4):
     - React-Core
-  - RNBackgroundGeolocation (4.4.3):
-    - CocoaLumberjack (~> 3.7.2)
-    - React-Core
   - RNCAsyncStorage (1.15.11):
     - React-Core
   - RNCMaskedView (0.1.10):
@@ -390,7 +384,6 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNBackgroundFetch (from `../node_modules/react-native-background-fetch`)
-  - RNBackgroundGeolocation (from `../node_modules/react-native-background-geolocation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -405,7 +398,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
-    - CocoaLumberjack
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -490,8 +482,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNBackgroundFetch:
     :path: "../node_modules/react-native-background-fetch"
-  RNBackgroundGeolocation:
-    :path: "../node_modules/react-native-background-geolocation"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCMaskedView:
@@ -515,7 +505,6 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   EXApplication: 9ff2a206009d6e55bca6c20b3f33d07986b51ef3
   EXConstants: 4cb52b6d8f636c767104a44bf7db3873e9c01a6f
@@ -557,7 +546,6 @@ SPEC CHECKSUMS:
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNBackgroundFetch: 4ba650701219cf06fdc08336cc0b010242d2d024
-  RNBackgroundGeolocation: b36eda458369e7d0c46b879d8f3d409916028540
   RNCAsyncStorage: eb05c0284dd6b50b32f92fad55e2a41e03358c43
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
