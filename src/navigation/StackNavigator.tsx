@@ -1,8 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '@screen/Home';
-import Tracker from '@/screen/Traker';
-import Log from '@/screen/Log';
 import { Ionicons } from '@expo/vector-icons';
 import useTheme from '@/utils/hooks/useTheme';
 

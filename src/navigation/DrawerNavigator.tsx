@@ -2,8 +2,9 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import useTheme from '@/utils/hooks/useTheme';
 import StackNavigator from './StackNavigator';
-import { SettingScreen, LogScreen, TrakerScreen } from '@screen/index';
+import { SettingScreen, LogScreen, TrakerScreen, HomeScreen } from '@screen/index';
 import { HomeIcon, TrackerIcon, LogIcon, SettingIcon } from '@/components/common/icons';
+import Home from '@/screen/Home';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +29,7 @@ const DrawerNavigator = () => {
     >
       <Drawer.Screen
         name="Main"
-        component={StackNavigator}
+        component={HomeScreen}
         options={{
           drawerLabel: 'HOME',
           drawerIcon: ({ focused, size }) => (
