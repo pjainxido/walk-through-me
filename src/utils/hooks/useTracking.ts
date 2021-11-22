@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useLocationTracker = () => {
+const useTracking= () => {
   const [lotIsActive, setlotIsActive] = useState<boolean>(false);
 
   const toggleLocationTracker = () => {
@@ -10,4 +10,4 @@ const useLocationTracker = () => {
   return {lotIsActive, toggleLocationTracker}
 };
 
-export default useLocationTracker;
+export default useTracking;
