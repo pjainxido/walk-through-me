@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
 import useTheme from '@/utils/hooks/useTheme';
-import useLocationTracker from '@/utils/hooks/useLocationTracker'
+import useTracking from '@/utils/hooks/useTracking';
 import TimeViewer from './TimeViewer';
 import { TimerButton, DefaultText } from '@components/common';
 import {
@@ -15,7 +15,12 @@ const Tracker: React.FC = () => {
   const { primaryText, subBackground, subColor } = useTheme();
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
-  const {lotIsActive ,toggleLocationTracker} = useLocationTracker();
+  const [isTracking, setIsTracking] = useState(false);
+  const { location, history, distance } = useTracking(isTracking);
+
+  const toggleTracking = () => {
+    setIsTracking((prev) => !prev);
+  };
 
   const startTimer = () => {
     console.log('start timer');
@@ -26,7 +31,6 @@ const Tracker: React.FC = () => {
       });
     }, 10);
   };
-
 
   const toggleTimer = (timerOn: boolean) => {
     timerOn ? stopTimer() : startTimer();
@@ -68,17 +72,17 @@ const Tracker: React.FC = () => {
             </IconView>
             <DefaultText>로그 저장</DefaultText>
           </TimerButton>
-          <TimerButton onPress={toggleLocationTracker}>
+          <TimerButton onPress={toggleTracking}>
             <IconView>
               <GPSTrackerIcon
                 size={36}
-                focused={lotIsActive}
+                focused={isTracking}
                 defaultColor={subBackground}
                 focusedColor={subColor}
               />
             </IconView>
             <DefaultText>
-              {lotIsActive? '위치 정보 기록중' : '탭하여 위치 기록'}
+              {isTracking ? '위치 정보 기록중' : '탭하여 위치 기록'}
             </DefaultText>
           </TimerButton>
           <TimerButton onPress={resetTracker}>
