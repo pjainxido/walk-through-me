@@ -1,18 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import BackgroundGeolocation from '@mauron85/react-native-background-geolocation';
-import { defaultLocation } from '../utils/vars';
-import { getDistanceFromLatLonInKm } from '../utils/getDistance';
+import { defaultLocation, getDistanceFromLatLonInKm } from '@/utils/tracker';
 
 const useTracking = (isActive: boolean) => {
-  const [isTracking, setIsTracking] = useState(false);
   const [location, setLocation] = useState(defaultLocation);
   const [history, setHistory] = useState<any>([]);
   const [distance, setDistance] = useState<number>(0);
-
-  const toggleTraking = () => {
-    setIsTracking((prev) => !prev);
-  };
 
   useEffect(() => {
     if (!isActive) {
@@ -162,8 +156,7 @@ const useTracking = (isActive: boolean) => {
     };
   }, [location, isActive]);
 
-  return { location, history, distance};
+  return { location, history, distance };
 };
 
 export default useTracking;
-
