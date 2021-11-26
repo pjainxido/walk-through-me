@@ -5,7 +5,7 @@ import { defaultLocation, getDistanceFromLatLonInKm } from '@/utils/tracker';
 
 const useTracking = (isActive: boolean) => {
   const [location, setLocation] = useState(defaultLocation);
-  const [history, setHistory] = useState<any>([]);
+  const [history, setHistory] = useState<any[]>([]);
   const [distance, setDistance] = useState<number>(0);
 
   useEffect(() => {
