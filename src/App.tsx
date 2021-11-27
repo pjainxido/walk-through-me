@@ -16,7 +16,7 @@ export const App = () => {
     const deviceTheme = Appearance.getColorScheme();
     asyncStoreTheme === null
       ? setTheme(deviceTheme)
-      : setTheme(theme === 'dark' ? 'dark' : 'light');
+      : setTheme(asyncStoreTheme === 'dark' ? 'dark' : 'light');
   }
   useEffect(() => {
     updateTheme();
