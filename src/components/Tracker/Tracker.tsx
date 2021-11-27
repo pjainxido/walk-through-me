@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
 import BackgroundTimer from 'react-native-background-timer';
-import useTheme from '@/utils/hooks/useTheme';
-import useTracking from '@/utils/hooks/useTracking';
+import useTheme from '@utils/hooks/useTheme';
+import useTracking from '@utils/hooks/useTracking';
 import TimeViewer from './TimeViewer';
 import { TimerButton, DefaultText } from '@components/common';
 import {
@@ -16,7 +16,7 @@ const Tracker: React.FC = () => {
   const [time, setTime] = useState<number>(0);
   const [timerOn, setTimerOn] = useState<boolean>(false);
   const [isTracking, setIsTracking] = useState(false);
-  const { location, history, distance } = useTracking(isTracking);
+  // const { location, history, distance } = useTracking(isTracking);
 
   const toggleTracking = () => {
     setIsTracking((prev) => !prev);
