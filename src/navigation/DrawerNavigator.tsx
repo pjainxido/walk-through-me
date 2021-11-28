@@ -1,31 +1,67 @@
 import React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { TouchableOpacity } from 'react-native';
+import {
+  createDrawerNavigator,
+  DrawerNavigationOptions
+} from '@react-navigation/drawer';
 import useTheme from '@/utils/hooks/useTheme';
 import StackNavigator from './StackNavigator';
-import { SettingScreen, LogScreen, TrakerScreen, HomeScreen } from '@screen/index';
-import { HomeIcon, TrackerIcon, LogIcon, SettingIcon } from '@/components/common/icons';
-
+import { SettingScreen, LogScreen, TrakerScreen } from '@screen/index';
+import {
+  HomeIcon,
+  TrackerIcon,
+  LogIcon,
+  SettingIcon,
+  MenuIcon
+} from '@/components/common/icons';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   const { primaryText, subColor, mainBackground, subBackground } = useTheme();
+  const navigation = useNavigation();
+
+  const toggleDrawer = () => {
+    navigation.dispatch(DrawerActions.toggleDrawer());
+  };
+
+  const drawerOption: DrawerNavigationOptions = {
+    headerShadowVisible: false,
+    headerTintColor: primaryText,
+    headerShown: false,
+    headerTransparent: true,
+    headerRight: () => (
+      <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
+    ),
+    headerLeft: () => (
+      null
+      // <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
+    ),
+    // headerTitleAlign: 'left',
+    // headerRightContainerStyle: {display: 'none'},
+    // headerTitleContainerStyle: {display: 'none'},
+    // headerLeftContainerStyle: {display: 'none'},
+    headerStyle: {
+      backgroundColor: mainBackground,
+      borderColor: mainBackground
+    },
+    headerTitleStyle: {
+      color: primaryText
+    },
+    overlayColor: 'transparent',
+    drawerActiveBackgroundColor: subColor,
+    drawerActiveTintColor: mainBackground,
+    drawerInactiveTintColor: primaryText,
+    drawerType: 'back',
+    drawerPosition: 'right',
+    drawerStyle: {
+      backgroundColor: subBackground,
+      width: 200
+    }
+  };
+
   return (
-    <Drawer.Navigator
-      screenOptions={{
-        headerShown: false,
-        overlayColor: 'transparent',
-        drawerActiveBackgroundColor: subColor,
-        drawerActiveTintColor: mainBackground,
-        drawerInactiveTintColor: primaryText,
-        drawerType: 'back',
-        drawerPosition: 'right',
-        drawerStyle: {
-          backgroundColor: subBackground,
-          width: 200
-        }
-      }}
-      initialRouteName="Main"
-    >
+    <Drawer.Navigator screenOptions={drawerOption} initialRouteName="Main">
       <Drawer.Screen
         name="Main"
         component={StackNavigator}
@@ -46,6 +82,7 @@ const DrawerNavigator = () => {
         component={TrakerScreen}
         options={{
           drawerLabel: 'Traker',
+          headerShown: false,
           drawerIcon: ({ focused, size }) => (
             <TrackerIcon
               size={size}
@@ -75,6 +112,7 @@ const DrawerNavigator = () => {
         name="Setting"
         component={SettingScreen}
         options={{
+          headerShown: true,
           drawerLabel: 'Setting',
           drawerIcon: ({ focused, size }) => (
             <SettingIcon

@@ -1,10 +1,15 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 interface iconProps {
   focusedColor?: string;
   defaultColor: string;
   size: number;
   focused?: boolean;
+}
+
+interface menuIconProps extends iconProps {
+  onPress: () => void;
 }
 
 export const HomeIcon: React.FC<iconProps> = ({
@@ -109,5 +114,23 @@ export const GPSTrackerIcon: React.FC<iconProps> = ({
       size={size}
       color={focused ? focusedColor : defaultColor}
     />
+  );
+};
+
+export const MenuIcon: React.FC<menuIconProps> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  onPress,
+  size
+}) => {
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <MaterialIcons
+        name="menu"
+        size={size}
+        color={focused ? focusedColor : defaultColor}
+      />
+    </TouchableOpacity>
   );
 };
