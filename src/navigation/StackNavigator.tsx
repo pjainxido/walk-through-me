@@ -13,6 +13,7 @@ export default () => {
     <Stack.Navigator
       screenOptions={{
         gestureDirection: 'horizontal',
+        headerShown: false,
         headerTransparent: true,
         headerTintColor: primaryText,
         headerBackTitleVisible: false,

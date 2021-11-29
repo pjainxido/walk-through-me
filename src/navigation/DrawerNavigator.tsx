@@ -28,8 +28,8 @@ const DrawerNavigator = () => {
   const drawerOption: DrawerNavigationOptions = {
     headerShadowVisible: false,
     headerTintColor: primaryText,
-    headerShown: false,
-    headerTransparent: true,
+    headerShown: true,
+    // headerTransparent: true,
     headerRight: () => (
       <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
     ),
@@ -37,10 +37,6 @@ const DrawerNavigator = () => {
       null
       // <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
     ),
-    // headerTitleAlign: 'left',
-    // headerRightContainerStyle: {display: 'none'},
-    // headerTitleContainerStyle: {display: 'none'},
-    // headerLeftContainerStyle: {display: 'none'},
     headerStyle: {
       backgroundColor: mainBackground,
       borderColor: mainBackground

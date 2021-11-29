@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { View } from 'react-native';
+
+import { View, Switch, SafeAreaView } from 'react-native';
 import { getItemFromAsync, setItemToAsync } from '@utils/common';
 import { DefaultText, ScreenLayout } from '@/components/common';
+import useTheme from '@/utils/hooks/useTheme';
 
 const Setting = () => {
+  const { primaryText, subColor, mainBackground, subBackground } = useTheme();
+  const [menuRight, setMenuRight] = useState<boolean>(false);
+  const [iconTextPrint, setIconTextPrint] = useState<boolean>(false);
+  const toggleMenu = () => {
+    setMenuRight((prev) => !prev);
+  };
+  const toggleIconTextPrint = () => {
+    setIconTextPrint((prev) => !prev);
+  };
   // TODO
   // theme 설정 , default, dark, light
   // icon 내부 텍스트 옵션 on off
@@ -12,24 +23,73 @@ const Setting = () => {
   return (
     <ScreenLayout>
       <Container>
-        <InfoText>테마</InfoText>
-        <OptionContainer></OptionContainer>
-      </Container>
-      <Container>
-        <InfoText>메뉴 방향</InfoText>
-        <OptionContainer></OptionContainer>
-      </Container>
-      <Container>
-        <InfoText>아이콘 텍스트</InfoText>
-        <OptionContainer></OptionContainer>
+        <OptionContainer>
+          <InfoText>테마</InfoText>
+        </OptionContainer>
+        <OptionContainer>
+          <InfoText>메뉴 위치 </InfoText>
+          <Option>
+            <StateText color={menuRight ? subColor : primaryText}>
+              {menuRight ? '오른쪽' : '왼쪽'}
+            </StateText>
+            <Switch
+              trackColor={{ false: subBackground, true: subColor }}
+              thumbColor={primaryText}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleMenu}
+              value={menuRight}
+            />
+          </Option>
+        </OptionContainer>
+        <OptionContainer>
+          <InfoText>아이콘 텍스트 표시</InfoText>
+          <Option>
+            <StateText color={iconTextPrint? subColor : primaryText}>
+              {iconTextPrint ? '표시' : '미표시'}
+            </StateText>
+            <Switch
+              trackColor={{ false: subBackground, true: subColor }}
+              thumbColor={primaryText}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleIconTextPrint}
+              value={iconTextPrint}
+            />
+          </Option>
+        </OptionContainer>
       </Container>
     </ScreenLayout>
   );
 };
 
-const Container= styled.View``;
-const InfoText = styled.Text``;
-const OptionContainer = styled.View``;
+const Container = styled.View`
+  margin: 50px;
+  flex: 1;
+  width: 80%;
+  align-items: flex-start;
+  justify-content: space-evenly;
+`;
+const OptionContainer = styled.View`
+  flex: 1;
+  width: 100%;
+  margin-bottom: 50px;
+`;
+const InfoText = styled.Text`
+  flex: 1;
+  font-size: 15px;
+  color: ${({ theme }) => theme.primaryText};
+`;
 
+interface stateTextProps {
+  color: string;
+}
+
+const StateText = styled.Text<stateTextProps>`
+  font-size: 25px;
+  color: ${({ color }) => color};
+`;
+const Option = styled.View`
+  flex: 2;
+  justify-content: space-around;
+`;
 
 export default Setting;
