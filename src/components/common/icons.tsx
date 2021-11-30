@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
 interface iconProps {
@@ -125,12 +126,18 @@ export const MenuIcon: React.FC<menuIconProps> = ({
   size
 }) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchablePadding onPress={onPress}>
       <MaterialIcons
         name="menu"
         size={size}
         color={focused ? focusedColor : defaultColor}
       />
-    </TouchableOpacity>
+    </TouchablePadding>
   );
 };
+
+
+const TouchablePadding = styled.TouchableOpacity`
+  padding: 10px;
+  
+`

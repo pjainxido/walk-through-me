@@ -27,9 +27,7 @@ const DrawerNavigator = () => {
 
   const drawerOption: DrawerNavigationOptions = {
     headerShadowVisible: false,
-    headerTintColor: primaryText,
     headerShown: true,
-    // headerTransparent: true,
     headerRight: () => (
       <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
     ),
@@ -38,13 +36,11 @@ const DrawerNavigator = () => {
       // <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
     ),
     headerStyle: {
-      backgroundColor: mainBackground,
-      borderColor: mainBackground
+      backgroundColor: subBackground,
     },
     headerTitleStyle: {
       color: primaryText
     },
-    overlayColor: 'transparent',
     drawerActiveBackgroundColor: subColor,
     drawerActiveTintColor: mainBackground,
     drawerInactiveTintColor: primaryText,

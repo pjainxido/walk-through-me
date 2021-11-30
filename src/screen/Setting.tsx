@@ -24,13 +24,13 @@ const Setting = () => {
     <ScreenLayout>
       <Container>
         <OptionContainer>
-          <InfoText>테마</InfoText>
+          <InfoText>Theme</InfoText>
         </OptionContainer>
         <OptionContainer>
-          <InfoText>메뉴 위치 </InfoText>
+          <InfoText>Menu Position</InfoText>
           <Option>
             <StateText color={menuRight ? subColor : primaryText}>
-              {menuRight ? '오른쪽' : '왼쪽'}
+              {menuRight ? 'right' : 'left'}
             </StateText>
             <Switch
               trackColor={{ false: subBackground, true: subColor }}
@@ -42,11 +42,8 @@ const Setting = () => {
           </Option>
         </OptionContainer>
         <OptionContainer>
-          <InfoText>아이콘 텍스트 표시</InfoText>
+          <InfoText>Icon Text Shown</InfoText>
           <Option>
-            <StateText color={iconTextPrint? subColor : primaryText}>
-              {iconTextPrint ? '표시' : '미표시'}
-            </StateText>
             <Switch
               trackColor={{ false: subBackground, true: subColor }}
               thumbColor={primaryText}
