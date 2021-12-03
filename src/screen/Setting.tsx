@@ -13,17 +13,6 @@ const Setting = () => {
   const [selectedTheme, setSelectedTheme] = useState<string>('');
   const [iconTextPrint, setIconTextPrint] = useState<boolean>(false);
 
-  const themeOptions = [
-    {
-      value: 'Banana'
-    },
-    {
-      value: 'Mango'
-    },
-    {
-      value: 'Pear'
-    }
-  ];
   const toggleMenu = () => {
     setMenuRight((prev) => !prev);
   };
@@ -89,16 +78,6 @@ const Setting = () => {
   );
 };
 
-const PickerContainer = styled.View`
-  align-self: center;
-  /* width: 314;
-  border-width: 1;
-  border-color: 'rgba(155,155,155,1)';
-  border-bottom-left-radius: 10;
-  background-color: 'rgba(214,210,210,1)';
-  margin-top: 10;
-  margin-left: 4; */
-`;
 
 const Container = styled.View`
   margin: 50px;
