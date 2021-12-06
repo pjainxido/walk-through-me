@@ -11,6 +11,7 @@ interface SettingState {
 
 type Action =
   | { type: 'SET_MENU_POSITION'; position: menuPosition }
+  | { type: 'TOGGLE_MENU_POSITION' }
   | { type: 'SET_THEME'; theme: ColorSchemeName }
   | { type: 'TOGGLE_ICON_SUB' };
 
@@ -19,7 +20,7 @@ type SettingDispatch = Dispatch<Action>;
 const SettingStateContext = createContext<SettingState>({
   theme: null,
   isIconSubText: false,
-  menuPosition: 'right'
+  menuPosition: 'left'
 });
 const SettingDispatchContext = createContext<SettingDispatch>(() => null);
 
@@ -29,6 +30,11 @@ function reducer(state: SettingState, action: Action): SettingState {
       return {
         ...state,
         menuPosition: action.position
+      };
+    case 'TOGGLE_MENU_POSITION':
+      return {
+        ...state,
+        menuPosition: state.menuPosition === 'right' ? 'left' : 'right'
       };
     case 'SET_THEME':
       return {
@@ -67,7 +73,7 @@ export function useSettingState() {
   return state;
 }
 
-export function useSettingDispatch() : SettingDispatch{
+export function useSettingDispatch(): SettingDispatch {
   const dispatch = useContext(SettingDispatchContext);
   if (!dispatch) throw new Error('Cannot find SampleProvider'); // 유효하지 않을땐 에러를 발생
   return dispatch;

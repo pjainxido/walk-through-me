@@ -7,6 +7,7 @@ import { getItemFromAsync, setItemToAsync } from '@utils/common';
 import { ThemeProvider } from 'styled-components/native';
 import { light, dark } from '@styles/theme';
 import DrawerNavigator from './navigation/DrawerNavigator';
+import { SettingProvider } from './context/SettingContext';
 
 export const App = () => {
   const [theme, setTheme] = useState<ColorSchemeName>(null);
@@ -27,20 +28,22 @@ export const App = () => {
   }, []);
 
   return (
-    <ThemeProvider theme={theme === 'light' ? light : dark}>
-      <NavigationContainer
-        theme={{
-          ...DefaultTheme,
-          colors: {
-            ...DefaultTheme.colors,
-            background:
-              theme === 'light' ? light.mainBackground : dark.mainBackground
-          }
-        }}
-      >
-        <DrawerNavigator />
-      </NavigationContainer>
-      <StatusBar />
-    </ThemeProvider>
+    <SettingProvider>
+      <ThemeProvider theme={theme === 'light' ? light : dark}>
+        <NavigationContainer
+          theme={{
+            ...DefaultTheme,
+            colors: {
+              ...DefaultTheme.colors,
+              background:
+                theme === 'light' ? light.mainBackground : dark.mainBackground
+            }
+          }}
+        >
+          <DrawerNavigator />
+        </NavigationContainer>
+        <StatusBar />
+      </ThemeProvider>
+    </SettingProvider>
   );
 };
