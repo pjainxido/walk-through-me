@@ -8,9 +8,15 @@ import { ThemeProvider } from 'styled-components/native';
 import { light, dark } from '@styles/theme';
 import DrawerNavigator from './navigation/DrawerNavigator';
 import { SettingProvider } from './context/SettingContext';
+import { useSettingState, useSettingDispatch } from '@/context/SettingContext';
 
 export const App = () => {
-  const [theme, setTheme] = useState<ColorSchemeName>(null);
+  // const [theme, setTheme] = useState<ColorSchemeName>(null);
+  const { theme, isIconSubText, menuPosition } = useSettingState();
+  const dispatch = useSettingDispatch();
+  const setTheme = (value: ColorSchemeName) => {
+    dispatch({ type: 'SET_THEME', theme: value });
+  };
 
   async function updateTheme() {
     const asyncStoreTheme = await getItemFromAsync('theme');
@@ -19,7 +25,11 @@ export const App = () => {
       ? setTheme(deviceTheme)
       : setTheme(asyncStoreTheme === 'dark' ? 'dark' : 'light');
   }
+  useEffect(()=>{
+    console.log(theme);
+  },[theme])
   useEffect(() => {
+    console.log(theme);
     updateTheme();
     Appearance.addChangeListener(updateTheme);
     return () => {

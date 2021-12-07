@@ -1,5 +1,6 @@
 import React, { useReducer, useContext, createContext, Dispatch } from 'react';
 import { ColorSchemeName } from 'react-native';
+import { getItemFromAsync, setItemToAsync } from '@utils/common';
 
 type menuPosition = 'left' | 'right';
 
@@ -27,16 +28,22 @@ const SettingDispatchContext = createContext<SettingDispatch>(() => null);
 function reducer(state: SettingState, action: Action): SettingState {
   switch (action.type) {
     case 'SET_MENU_POSITION':
+      setItemToAsync('menuPosition', action.position);
       return {
         ...state,
         menuPosition: action.position
       };
     case 'TOGGLE_MENU_POSITION':
+      setItemToAsync(
+        'menuPosition',
+        state.menuPosition === 'right' ? 'left' : 'right'
+      );
       return {
         ...state,
         menuPosition: state.menuPosition === 'right' ? 'left' : 'right'
       };
     case 'SET_THEME':
+      setItemToAsync('theme', action.theme);
       return {
         ...state,
         theme: action.theme
