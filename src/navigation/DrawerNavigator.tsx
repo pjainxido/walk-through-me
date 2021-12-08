@@ -15,10 +15,14 @@ import {
   MenuIcon
 } from '@/components/common/icons';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { useSettingState } from '@/context/SettingContext';
 const Drawer = createDrawerNavigator();
 
 const DrawerNavigator = () => {
   const { primaryText, subColor, mainBackground, subBackground } = useTheme();
+  const { menuPosition } = useSettingState();
+  const isMenuLeft = menuPosition === 'left';
+
   const navigation = useNavigation();
 
   const toggleDrawer = () => {
@@ -28,15 +32,16 @@ const DrawerNavigator = () => {
   const drawerOption: DrawerNavigationOptions = {
     headerShadowVisible: false,
     headerShown: true,
-    headerRight: () => (
-      <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
-    ),
-    headerLeft: () => (
-      null
-      // <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
-    ),
+    headerRight: () =>
+      isMenuLeft ? null : (
+        <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
+      ),
+    headerLeft: () =>
+      isMenuLeft ? (
+        <MenuIcon size={24} defaultColor={primaryText} onPress={toggleDrawer} />
+      ) : null,
     headerStyle: {
-      backgroundColor: subBackground,
+      backgroundColor: subBackground
     },
     headerTitleStyle: {
       color: primaryText
@@ -45,7 +50,7 @@ const DrawerNavigator = () => {
     drawerActiveTintColor: mainBackground,
     drawerInactiveTintColor: primaryText,
     drawerType: 'back',
-    drawerPosition: 'right',
+    drawerPosition: menuPosition,
     drawerStyle: {
       backgroundColor: subBackground,
       width: 200
