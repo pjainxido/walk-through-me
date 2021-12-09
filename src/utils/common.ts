@@ -24,7 +24,7 @@ export const getItemFromAsync = (storageName: string) => {
         reject(err);
       }
 
-      result === undefined? resolve(null) : resolve(JSON.parse(result));
+      result === undefined ? resolve(null) : resolve(JSON.parse(result));
     });
   });
 };
@@ -43,4 +43,16 @@ export const setItemToAsync = (storageName: string, item: any) => {
       resolve('Set Success');
     });
   });
+};
+
+export const clockify = (sec: number) => {
+  let decimal = Math.floor((Number(sec.toFixed(2)) * 100) % 100);
+  let hours = Math.floor(sec / 60 / 60);
+  let mins = Math.floor((sec / 60) % 60);
+  let seconds = Math.floor(sec % 60);
+  let displayDecimal = decimal < 10 ? `0${decimal}` : decimal;
+  let displayHours = hours < 10 ? `0${hours}` : hours;
+  let displayMins = mins < 10 ? `0${mins}` : mins;
+  let displaySecs = seconds < 10 ? `0${seconds}` : seconds;
+  return { displayHours, displayMins, displaySecs, displayDecimal };
 };

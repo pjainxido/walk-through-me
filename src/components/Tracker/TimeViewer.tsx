@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
+import { clockify } from '@/utils/common';
 import { View, Text } from 'react-native';
 
 interface TimeViewerProps {
@@ -7,17 +8,6 @@ interface TimeViewerProps {
 }
 
 const TimeViewer: React.FC<TimeViewerProps> = ({ second }) => {
-  const clockify = (sec: number) => {
-    let decimal = Math.floor((Number(sec.toFixed(2)) * 100) % 100);
-    let hours = Math.floor(sec / 60 / 60);
-    let mins = Math.floor((sec / 60) % 60);
-    let seconds = Math.floor(sec % 60);
-    let displayDecimal = decimal < 10 ? `0${decimal}` : decimal;
-    let displayHours = hours < 10 ? `0${hours}` : hours;
-    let displayMins = mins < 10 ? `0${mins}` : mins;
-    let displaySecs = seconds < 10 ? `0${seconds}` : seconds;
-    return { displayHours, displayMins, displaySecs, displayDecimal };
-  };
   return (
     <TimeContainer>
       <TimeText>{clockify(second).displayHours}</TimeText>
