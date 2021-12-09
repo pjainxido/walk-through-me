@@ -1,6 +1,14 @@
-import React, { useReducer, useContext, createContext, Dispatch } from 'react';
-import { ColorSchemeName } from 'react-native';
+import React, {
+  useEffect,
+  useReducer,
+  useContext,
+  createContext,
+  Dispatch
+} from 'react';
+import { Appearance, ColorSchemeName } from 'react-native';
 import { getItemFromAsync, setItemToAsync } from '@utils/common';
+import { ThemeProvider } from 'styled-components/native';
+import { light, dark } from '@styles/theme';
 
 type menuPosition = 'left' | 'right';
 
@@ -64,11 +72,36 @@ export function SettingProvider({ children }: { children: React.ReactNode }) {
     isIconSubText: false,
     menuPosition: 'right'
   });
+  const { theme } = state;
+  const setTheme = (value: ColorSchemeName) => {
+    dispatch({ type: 'SET_THEME', theme: value });
+  };
+  //App.tsx theme options add here
+  async function updateTheme() {
+    const asyncStoreTheme = await getItemFromAsync('theme');
+    const deviceTheme = Appearance.getColorScheme();
+    asyncStoreTheme === null
+      ? setTheme(deviceTheme)
+      : setTheme(asyncStoreTheme === 'dark' ? 'dark' : 'light');
+  }
+  useEffect(() => {
+    console.log(theme);
+  }, [theme]);
+  useEffect(() => {
+    console.log(theme);
+    updateTheme();
+    Appearance.addChangeListener(updateTheme);
+    return () => {
+      Appearance.removeChangeListener(updateTheme);
+    };
+  }, []);
 
   return (
     <SettingStateContext.Provider value={state}>
       <SettingDispatchContext.Provider value={dispatch}>
-        {children}
+        <ThemeProvider theme={theme === 'light' ? light : dark}>
+          {children}
+        </ThemeProvider>
       </SettingDispatchContext.Provider>
     </SettingStateContext.Provider>
   );
