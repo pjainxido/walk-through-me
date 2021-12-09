@@ -4,12 +4,7 @@ import BackgroundTimer from 'react-native-background-timer';
 import useTheme from '@utils/hooks/useTheme';
 import useTracking from '@utils/hooks/useTracking';
 import TimeViewer from './TimeViewer';
-import { TimerButton, DefaultText } from '@components/common';
-import {
-  SaveTrackerIcon,
-  ResetTrackerIcon,
-  GPSTrackerIcon
-} from '@components/common/icons';
+import TrackerHeader from './TrackerHeader';
 
 const Tracker: React.FC = () => {
   const { primaryText, subBackground, subColor } = useTheme();
@@ -65,33 +60,12 @@ const Tracker: React.FC = () => {
   return (
     <BackGroundTouchable onPress={() => toggleTimer(timerOn)}>
       <Container>
-        <TimerHeader>
-          <TimerButton onPress={saveTrackerData}>
-            <IconView>
-              <SaveTrackerIcon size={36} defaultColor={primaryText} />
-            </IconView>
-            <DefaultText>로그 저장</DefaultText>
-          </TimerButton>
-          <TimerButton onPress={toggleTracking}>
-            <IconView>
-              <GPSTrackerIcon
-                size={36}
-                focused={isTracking}
-                defaultColor={subBackground}
-                focusedColor={subColor}
-              />
-            </IconView>
-            <DefaultText>
-              {isTracking ? '위치 정보 기록중' : '탭하여 위치 기록'}
-            </DefaultText>
-          </TimerButton>
-          <TimerButton onPress={resetTracker}>
-            <IconView>
-              <ResetTrackerIcon size={36} defaultColor={primaryText} />
-            </IconView>
-            <DefaultText>타이머 초기화</DefaultText>
-          </TimerButton>
-        </TimerHeader>
+        <TrackerHeader
+          isTracking={isTracking}
+          onPressTracking={toggleTracking}
+          onPressReset={resetTracker}
+          onPressSave={saveTrackerData}
+        />
         <TimerContainer>
           <TimeViewer second={time} />
           <ToggleTimerText>
@@ -115,18 +89,6 @@ const Container = styled.View`
 
 const ToggleTimerText = styled.Text`
   color: ${({ theme }) => theme.primaryText};
-`;
-
-const IconView = styled.View`
-  margin-bottom: 15px;
-`;
-
-const TimerHeader = styled.View`
-  flex: 1;
-  top: 30px;
-  height: 20px;
-  width: 100%;
-  flex-direction: row;
 `;
 
 const TimerContainer = styled.View`
