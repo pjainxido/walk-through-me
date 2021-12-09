@@ -44,7 +44,7 @@ const Setting = () => {
             selectedValue={theme}
             onValueChange={(itemValue) => changeTheme(itemValue)}
           >
-            <Picker.Item label="device theme" value="" />
+            <Picker.Item label="device theme" value="default" />
             <Picker.Item label="light" value="light" />
             <Picker.Item label="dark" value="dark" />
           </Picker>
