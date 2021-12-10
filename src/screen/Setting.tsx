@@ -14,6 +14,8 @@ const Setting = () => {
   const dispatch = useSettingDispatch();
   const { theme, isIconSubText, menuPosition } = useSettingState();
 
+  const switchThumbColor = theme === 'light' ? mainBackground : primaryText;
+
   const changeTheme = (value: any) => {
     value === ''
       ? dispatch({ type: 'SET_THEME', theme: null })
@@ -59,7 +61,7 @@ const Setting = () => {
             </StateText>
             <Switch
               trackColor={{ false: subBackground, true: subColor }}
-              thumbColor={primaryText}
+              thumbColor={switchThumbColor}
               ios_backgroundColor="#3e3e3e"
               onValueChange={toggleMenuPosition}
               value={menuPosition === 'right'}
@@ -71,8 +73,7 @@ const Setting = () => {
           <Option>
             <Switch
               trackColor={{ false: subBackground, true: subColor }}
-              thumbColor={primaryText}
-              ios_backgroundColor="#3e3e3e"
+              thumbColor={switchThumbColor}
               onValueChange={toggleIconTextPrint}
               value={isIconSubText}
             />
