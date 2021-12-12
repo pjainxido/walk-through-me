@@ -4,13 +4,13 @@
     "baseUrl": "./src",
     "paths": {
       "@/*": ["./*"],
-      "@screen/*": ["./screen/*"],
-      "@components/*": ["./components/*"],
-      "@modules/*": ["./modules/*"],
-      "@scenes/*": ["./scenes/*"],
-      "@utils/*": ["./utils/*"],
-      "@styles/*": ["./styles/*"],
-      "@navigation/*": ["./navigation/*"]
+      "@screen/*": ["screen/*"],
+      "@components/*": ["components/*"],
+      "@modules/*": ["modules/*"],
+      "@scenes/*": ["scenes/*"],
+      "@utils/*": ["utils/*"],
+      "@styles/*": ["styles/*"],
+      "@navigation/*": ["navigation/*"]
     },
     "moduleResolution": "node",
     "strict": true,

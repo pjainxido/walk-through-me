@@ -95,6 +95,7 @@ const DrawerNavigator = () => {
         component={LogScreen}
         options={{
           drawerLabel: 'Log',
+          headerShown: false,
           drawerIcon: ({ focused, size }) => (
             <LogIcon
               size={size}
