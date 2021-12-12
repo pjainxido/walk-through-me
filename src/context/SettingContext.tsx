@@ -55,16 +55,11 @@ function reducer(state: SettingState, action: Action): SettingState {
         menuPosition: action.position
       };
     case 'TOGGLE_MENU_POSITION':
-      // setItemToAsync(
-      //   'menuPosition',
-      //   state.menuPosition === 'right' ? 'left' : 'right'
-      // );
       return {
         ...state,
         menuPosition: state.menuPosition === 'right' ? 'left' : 'right'
       };
     case 'SET_THEME':
-      // setItemToAsync('theme', action.theme);
       return {
         ...state,
         theme: action.theme
