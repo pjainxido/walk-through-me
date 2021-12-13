@@ -23,4 +23,8 @@ export const TimerButton = styled.TouchableOpacity`
   align-items: center;
 `;
 
+export const DefaultContainer = styled.View`
+  flex: 1;
+`
+
 export { ScreenLayout };
