@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from './RootStackParams';
-import { NavButton, DefaultText, ScreenLayout } from '@/components/common';
+import { ScreenLayout } from '@/components/common';
 import BarChart from '@/components/Log/chart/BarChart';
 import PieChart from '@components/Log/chart/PieLogChart';
 import ProgressChart from '@components/Log/chart/ProgressChart';

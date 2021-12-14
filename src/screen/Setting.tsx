@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
 import { Picker } from '@react-native-picker/picker';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 import { View, Switch, SafeAreaView, ColorSchemeName } from 'react-native';
 import { getItemFromAsync, setItemToAsync } from '@utils/common';
 import { DefaultText, ScreenLayout } from '@/components/common';
-import { useSettingState, useSettingDispatch } from '@/context/SettingContext';
+import {
+  useSettingState,
+  useSettingDispatch,
+  Theme
+} from '@/context/SettingContext';
 
 import useTheme from '@/utils/hooks/useTheme';
 
@@ -13,9 +18,21 @@ const Setting = () => {
   const { primaryText, subColor, mainBackground, subBackground } = useTheme();
   const dispatch = useSettingDispatch();
   const { theme, isIconSubText, menuPosition } = useSettingState();
+  const [openDropDown, setOpenDropDown] = useState(false);
+  const [dropDownValue, setDropdownValue] = useState<Theme>('default');
+
+  useEffect(() => {
+    setDropdownValue(theme);
+    console.log(theme);
+  }, [theme]);
 
   const switchThumbColor = theme === 'light' ? mainBackground : primaryText;
 
+  const dropDownItems = [
+    { label: 'device theme', value: 'default' },
+    { label: 'light', value: 'light' },
+    { label: 'dark', value: 'dark' }
+  ];
   const changeTheme = (value: any) => {
     value === ''
       ? dispatch({ type: 'SET_THEME', theme: null })
@@ -33,23 +50,17 @@ const Setting = () => {
       <Container>
         <OptionContainer>
           <InfoText>Theme</InfoText>
-          <Picker
+          <DropDownPicker
+            open={openDropDown}
+            setOpen={setOpenDropDown}
+            value={dropDownValue ? dropDownValue.toString() : 'default'}
+            setValue={changeTheme}
+            items={dropDownItems}
             style={{
-              height: 100,
-              width: 200,
-              position: 'relative',
-              zIndex: 5000
+              backgroundColor: subBackground,
+              borderStyle: 'dotted'
             }}
-            itemStyle={{
-              color: primaryText
-            }}
-            selectedValue={theme}
-            onValueChange={(itemValue) => changeTheme(itemValue)}
-          >
-            <Picker.Item label="device theme" value="default" />
-            <Picker.Item label="light" value="light" />
-            <Picker.Item label="dark" value="dark" />
-          </Picker>
+          />
         </OptionContainer>
         <OptionContainer>
           <InfoText>Menu Position</InfoText>

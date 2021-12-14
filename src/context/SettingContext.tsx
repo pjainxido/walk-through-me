@@ -13,7 +13,7 @@ import { light, dark } from '@styles/theme';
 import { LOCAL_STORE_KEY } from '@utils/constants';
 
 type menuPosition = 'left' | 'right';
-type Theme = ColorSchemeName | 'default';
+export type Theme = ColorSchemeName | 'default';
 
 interface SettingState {
   theme: Theme;
