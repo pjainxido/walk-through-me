@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { clockify } from '@/utils/common';
-import { View, Text } from 'react-native';
 
 interface TimeViewerProps {
   second: number;

@@ -1,5 +1,3 @@
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Text } from 'react-native';
 import ScreenLayout from './ScreenLayout';
 import styled from 'styled-components/native';
 

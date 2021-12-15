@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, SafeAreaView } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import styled from 'styled-components/native';
 
 interface ScreenLayoutProps {

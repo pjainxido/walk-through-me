@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/native';
-import { Picker } from '@react-native-picker/picker';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-import { View, Switch, SafeAreaView, ColorSchemeName } from 'react-native';
-import { getItemFromAsync, setItemToAsync } from '@utils/common';
-import { DefaultText, ScreenLayout } from '@/components/common';
+import { Switch } from 'react-native';
+import { ScreenLayout } from '@/components/common';
 import {
   useSettingState,
   useSettingDispatch,
