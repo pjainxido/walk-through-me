@@ -9,6 +9,7 @@ import {
   useSettingDispatch,
   Theme
 } from '@/context/SettingContext';
+import { CheckIcon, DropDownArrowIcon } from '@/components/common/icons';
 
 import useTheme from '@/utils/hooks/useTheme';
 
@@ -48,17 +49,38 @@ const Setting = () => {
       <Container>
         <OptionContainer>
           <InfoText>Theme</InfoText>
-          <DropDownPicker
-            open={openDropDown}
-            setOpen={setOpenDropDown}
-            value={dropDownValue ? dropDownValue.toString() : 'default'}
-            setValue={changeTheme}
-            items={dropDownItems}
-            style={{
-              backgroundColor: subBackground,
-              borderStyle: 'dotted'
-            }}
-          />
+          <SelectorContainer>
+            <DropDownPicker
+              open={openDropDown}
+              setOpen={setOpenDropDown}
+              value={dropDownValue ? dropDownValue.toString() : 'default'}
+              setValue={changeTheme}
+              items={dropDownItems}
+              ArrowDownIconComponent={() => (
+                <DropDownArrowIcon
+                  size={24}
+                  isDown={true}
+                  defaultColor={primaryText}
+                />
+              )}
+              ArrowUpIconComponent={() => (
+                <DropDownArrowIcon size={24} defaultColor={primaryText} />
+              )}
+              TickIconComponent={() => (
+                <CheckIcon size={24} defaultColor={primaryText} />
+              )}
+              style={{
+                backgroundColor: subBackground,
+                borderStyle: 'dotted'
+              }}
+              dropDownContainerStyle={{
+                backgroundColor: subBackground
+              }}
+              textStyle={{
+                color: primaryText
+              }}
+            />
+          </SelectorContainer>
         </OptionContainer>
         <OptionContainer>
           <InfoText>Menu Position</InfoText>
@@ -66,7 +88,7 @@ const Setting = () => {
             <StateText
               color={menuPosition === 'right' ? subColor : primaryText}
             >
-              {menuPosition === 'right' ? 'right' : 'left'}
+              {menuPosition === 'right' ? 'Right' : 'Left'}
             </StateText>
             <Switch
               trackColor={{ false: subBackground, true: subColor }}
@@ -80,6 +102,11 @@ const Setting = () => {
         <OptionContainer>
           <InfoText>Icon Text Shown</InfoText>
           <Option>
+            <StateText
+              color={isIconSubText ?  subColor : subBackground}
+            >
+              {isIconSubText ? 'Enable' : 'Disable'}
+            </StateText>
             <Switch
               trackColor={{ false: subBackground, true: subColor }}
               thumbColor={switchThumbColor}
@@ -101,13 +128,18 @@ const Container = styled.View`
   justify-content: space-evenly;
 `;
 const OptionContainer = styled.View`
-  flex: 2;
+  flex: 1;
   width: 100%;
   margin-bottom: 50px;
 `;
+
+const SelectorContainer = styled.View`
+  flex: 3;
+`;
+
 const InfoText = styled.Text`
   flex: 1;
-  font-size: 15px;
+  font-size: 20;
   color: ${({ theme }) => theme.primaryText};
 `;
 
@@ -116,7 +148,7 @@ interface stateTextProps {
 }
 
 const StateText = styled.Text<stateTextProps>`
-  font-size: 25px;
+  font-size: 15px;
   color: ${({ color }) => color};
 `;
 const Option = styled.View`

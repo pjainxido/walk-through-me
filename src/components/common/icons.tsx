@@ -135,8 +135,28 @@ export const MenuIcon: React.FC<menuIconProps> = ({
   );
 };
 
-
 const TouchablePadding = styled.TouchableOpacity`
   padding: 10px;
-  
-`
+`;
+
+interface IDropDownArrowIcon extends iconProps {
+  isDown?: boolean;
+}
+
+export const DropDownArrowIcon: React.FC<IDropDownArrowIcon> = ({
+  size,
+  defaultColor,
+  isDown = false
+}) => {
+  return (
+    <MaterialIcons
+      name={isDown ? 'keyboard-arrow-down' : 'keyboard-arrow-up'}
+      size={size}
+      color={defaultColor}
+    />
+  );
+};
+
+export const CheckIcon: React.FC<iconProps> = ({ size, defaultColor }) => {
+  return <MaterialIcons name="check" size={size} color={defaultColor} />;
+};
