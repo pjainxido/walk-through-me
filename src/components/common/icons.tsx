@@ -160,3 +160,23 @@ export const DropDownArrowIcon: React.FC<IDropDownArrowIcon> = ({
 export const CheckIcon: React.FC<iconProps> = ({ size, defaultColor }) => {
   return <MaterialIcons name="check" size={size} color={defaultColor} />;
 };
+
+interface IChartIcon extends iconProps {
+  chartType: 'pie' | 'bar' | 'progress';
+}
+
+export const ChartIcon: React.FC<IChartIcon> = ({
+  focused,
+  defaultColor,
+  focusedColor,
+  chartType,
+  size
+}) => {
+  return (
+    <MaterialIcons
+      name={chartType === 'progress' ? 'bubble-chart' : `${chartType}-chart`}
+      size={size}
+      color={focused ? focusedColor : defaultColor}
+    />
+  );
+};

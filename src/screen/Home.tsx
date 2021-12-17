@@ -13,7 +13,6 @@ const Home = () => {
   const { mainBackground } = useTheme();
 
   const navigation = useNavigation<homeScreenProp>();
-  //timer, log
 
   return (
     <ScreenLayout>
