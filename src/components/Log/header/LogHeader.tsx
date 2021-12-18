@@ -21,14 +21,14 @@ const LogHeader: React.FC<ILogHeader> = ({ activeChart }) => {
           size={24}
           defaultColor={subBackground}
           focusedColor={primaryText}
-          focused={true}
+          focused={activeChart ==='pie'}
           chartType="pie"
         />
         <ChartIcon
           size={24}
           defaultColor={subBackground}
           focusedColor={primaryText}
-          focused={false}
+          focused={activeChart === 'bar'}
           chartType="bar"
         />
 
@@ -36,7 +36,7 @@ const LogHeader: React.FC<ILogHeader> = ({ activeChart }) => {
           size={24}
           defaultColor={subBackground}
           focusedColor={primaryText}
-          focused={false}
+          focused={activeChart === 'progress'}
           chartType="progress"
         />
       </ChartTypePickerContainer>

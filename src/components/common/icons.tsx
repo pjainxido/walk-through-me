@@ -180,3 +180,7 @@ export const ChartIcon: React.FC<IChartIcon> = ({
     />
   );
 };
+
+export const CalendarIcon: React.FC<iconProps> = ({ size, defaultColor }) => (
+  <MaterialIcons name="calendar-today" size={size} color={defaultColor} />
+);
