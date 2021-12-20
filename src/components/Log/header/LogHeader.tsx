@@ -9,36 +9,42 @@ export type chartType = 'pie' | 'bar' | 'progress' | null;
 
 interface ILogHeader {
   activeChart: 'pie' | 'bar' | 'progress' | null;
+  changeChart: (chart: chartType) => void;
 }
 
-const LogHeader: React.FC<ILogHeader> = ({ activeChart }) => {
+const LogHeader: React.FC<ILogHeader> = ({ activeChart, changeChart }) => {
   const { primaryText, subColor, mainBackground, subBackground } = useTheme();
   return (
     <DefaultContainer>
       <DatePickerContainer></DatePickerContainer>
       <ChartTypePickerContainer>
-        <ChartIcon
-          size={24}
-          defaultColor={subBackground}
-          focusedColor={primaryText}
-          focused={activeChart ==='pie'}
-          chartType="pie"
-        />
-        <ChartIcon
-          size={24}
-          defaultColor={subBackground}
-          focusedColor={primaryText}
-          focused={activeChart === 'bar'}
-          chartType="bar"
-        />
-
-        <ChartIcon
-          size={24}
-          defaultColor={subBackground}
-          focusedColor={primaryText}
-          focused={activeChart === 'progress'}
-          chartType="progress"
-        />
+        <ChartIconContainer onPress={()=>changeChart('pie')}>
+          <ChartIcon
+            size={24}
+            defaultColor={subBackground}
+            focusedColor={primaryText}
+            focused={activeChart === 'pie'}
+            chartType="pie"
+          />
+        </ChartIconContainer>
+        <ChartIconContainer onPress={()=>changeChart('bar')}>
+          <ChartIcon
+            size={24}
+            defaultColor={subBackground}
+            focusedColor={primaryText}
+            focused={activeChart === 'bar'}
+            chartType="bar"
+          />
+        </ChartIconContainer>
+        <ChartIconContainer onPress={()=>changeChart('progress')}>
+          <ChartIcon
+            size={24}
+            defaultColor={subBackground}
+            focusedColor={primaryText}
+            focused={activeChart === 'progress'}
+            chartType="progress"
+          />
+        </ChartIconContainer>
       </ChartTypePickerContainer>
     </DefaultContainer>
   );
@@ -53,5 +59,7 @@ const DatePickerContainer = styled.View`
   flex: 1;
   flex-direction: row;
 `;
+
+const ChartIconContainer = styled.TouchableOpacity``;
 
 export default LogHeader;

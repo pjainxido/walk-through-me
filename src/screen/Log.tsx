@@ -10,6 +10,10 @@ import { chartType } from '@/components/Log/header/LogHeader';
 const Log = () => {
   const [activeChart, setActiveChart] = useState<chartType>('pie');
 
+  const changeChart = (chart: chartType) => {
+    setActiveChart(chart);
+  }
+
   const chartWidth = Dimensions.get('window').width * 0.7;
 
   const Contents = (activeChart: chartType) => {
@@ -26,7 +30,7 @@ const Log = () => {
   };
 
   return <ScreenLayout>
-    <LogHeader activeChart={activeChart}/>
+    <LogHeader activeChart={activeChart} changeChart={changeChart} />
     {Contents(activeChart)}
     </ScreenLayout>;
 };
